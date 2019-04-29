@@ -1,0 +1,1492 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<formSettings>
+  <environments>
+    <environment name="BIG_TEST_SERVER" url="https://visionmctest.ngkfgcs.com"/>
+    <environment name="VISION_STAGE" url="https://visionstage.ngkfgcs.com"/>
+    <environment name="AZURE_CLOUD" url="http://40.117.114.149:8001"/>
+    <environment name="ATDAPP01" url="https://atd1.ngkfgcs.com"/>
+    <environment name="ATDTEST01" url="https://atdtest.ngkfgcs.com"/>
+    <environment name="CANTORAPP01" url="https://cantor1.ngkfgcs.com"/>
+    <environment name="CANTORPROC01" url="https://cantor1.ngkfgcs.com"/>
+    <environment name="CANTORTEST01" url="https://cantortest.ngkfgcs.com"/>
+    <environment name="CIGNAAPP01" url="https://cigna1.ngkfgcs.com"/>
+    <environment name="CIGNATEST01" url="https://cignatest.ngkfgcs.com"/>
+    <environment name="CSRAAPP" url="https://csra1.ngkfgcs.com"/>
+    <environment name="CSRATEST01" url="https://csratest.ngkfgcs.com"/>
+    <environment name="CTLAPP01" url="https://centurylink1.ngkfgcs.com"/>
+    <environment name="CTLPROC01" url="https://centurylink1.ngkfgcs.com"/>
+    <environment name="CTLTEST01" url="https://centurylinktest.ngkfgcs.com"/>
+    <environment name="CUMMINSAPP" url="https://cummins1.ngkfgcs.com"/>
+    <environment name="CUMMINSTEST01" url="https://cumminstest.ngkfgcs.com"/>
+    <environment name="HILLROMAPP01" url="https://hillrom1.ngkfgcs.com"/>
+    <environment name="HILLROMTEST01" url="https://hillromtest.ngkfgcs.com"/>
+    <environment name="LABCORPAPP01" url="https://labcorp1.ngkfgcs.com"/>
+    <environment name="LABCORPTEST01" url="https://labcorptest.ngkfgcs.com"/>
+    <environment name="NGKFAPP" url="https://ngkf1.ngkfgcs.com"/>
+    <environment name="NGKFAPPTEST" url="https://ngkftest.ngkfgcs.com"/>
+    <environment name="NOKIAAPP01" url="https://nokia1.ngkfgcs.com"/>
+    <environment name="NOKIATEST01" url="https://nokiatest.ngkfgcs.com"/>
+    <environment name="RELXAPP" url="https://relx1.ngkfgcs.com"/>
+    <environment name="RELXAPPTEST" url="https://relxtext.ngkfgcs.com"/>
+    <environment name="SILGANAPP01" url="https://silgan1.ngkfgcs.com"/>
+    <environment name="SILGANTEST01" url="https://silgantest.ngkfgcs.com"/>
+    <environment name="TACAPP01" url="https://transamerica1.ngkfgcs.com"/>
+    <environment name="TACTEST01" url="https://transamericatest.ngkfgcs.com"/>
+    <environment name="TKAPP" url="https://tk1.ngkfgcs.com"/>
+    <environment name="TKTEST01" url="https://tktest.ngkfgcs.com"/>
+    <environment name="UTCAPP01" url="https://utc1.ngkfgcs.com"/>
+    <environment name="UTCTEST01" url="https://utctest.ngkfgcs.com"/>
+    <environment name="VISIONDEMO" url="https://visiondemo.ngkfgcs.com"/>
+    <environment name="CRUSHDEV" url="https://crushdev.ngkfgcs.com"/>
+    <environment name="CRUSHDEV2" url="https://crushdev2.ngkfgcs.com"/>
+    <environment name="VSNDEVMC" url="https://visiondev.ngkfgcs.com"/>
+    <environment name="CRUSHDEMO" url="https://visiongold.ngkfgcs.com"/>
+    <environment name="REGOLD02" url="https://visiongold2.ngkfgcs.com"/>
+    <environment name="CRUSHAPPTEST" url="https://vision1test.ngkfgcs.com"/>
+    <environment name="VSNTSTMC" url="https://visionmctest.ngkfgcs.com"/>
+    <environment name="RETRAIN01" url="https://visiontrain1.ngkfgcs.com"/>
+  </environments>
+  
+  <queryFilterList>
+    <queryFilter id="default">
+      <filterFields>
+        <filterField>
+          <dataSectionName></dataSectionName>
+          <fieldName>triStatusCL</fieldName>
+          <fieldValue>'Retired','Upload Error','Template','History','Deleted'</fieldValue>
+          <dataType>string</dataType>
+          <operator>not_in</operator>
+        </filterField>
+      </filterFields>
+    </queryFilter>
+  </queryFilterList>
+
+  <defaults>
+    <fieldValues>
+      <defaultFieldValues module="triAsset" objectType="triVehicles">
+        <defaultFieldValue dataSectionName="RecordInformation" fieldName="triCurrencyUO" fieldValue="US Dollars"/>
+      </defaultFieldValues>
+    </fieldValues>
+  </defaults>
+  
+  <importMetaDataList>
+    <importMetaData id="Location Cost Code">
+      <worksheetName>LocationCostCodeData</worksheetName>
+      <module>triCostCode</module>
+      <objectType>triCostCode</objectType>
+      <gui>triLocationCostCode</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="create draft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="LOC_REF" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triLocationRefTX"/>
+        <mapping from="COST_CENTER" required="false" key="false" section="RecordInformation" to="triCostCenterTX"/>
+        <mapping from="ID" required="false" key="false" section="RecordInformation" to="triIdTX"/>
+        <mapping from="DATE" required="false" key="false" section="RecordInformation" to="triDateDA"/>
+        <mapping from="SEPARATOR" required="false" key="false" section="RecordInformation" to="triSeparatorLI"/>
+        <mapping from="ACCOUNT_TYPE" required="false" key="false" section="RecordInformation" to="triAccountingTypeLI"/>
+        <mapping from="COST_TYPE" required="false" key="false" section="RecordInformation" to="triCostTypeLI"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Service Cost Code">
+      <worksheetName>ServiceCostCodeData</worksheetName>
+      <module>triCostCode</module>
+      <objectType>triCostCode</objectType>
+      <gui>triServiceCostCode</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="create draft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="SRV_REF" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triServiceRefTX"/>
+        <mapping from="COST_CENTER" required="false" key="false" section="RecordInformation" to="triCostCenterTX"/>
+        <mapping from="ID" required="false" key="false" section="RecordInformation" to="triIdTX"/>
+        <mapping from="DATE" required="false" key="false" section="RecordInformation" to="triDateDA"/>
+        <mapping from="SEPARATOR" required="false" key="false" section="RecordInformation" to="triSeparatorLI"/>
+        <mapping from="ACCOUNT_TYPE" required="false" key="false" section="RecordInformation" to="triAccountingTypeLI"/>
+        <mapping from="COST_TYPE" required="false" key="false" section="RecordInformation" to="triCostTypeLI"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Organization Cost Code">
+      <worksheetName>OrganizationCostCodeData</worksheetName>
+      <module>triCostCode</module>
+      <objectType>triCostCode</objectType>
+      <gui>triOrganizationCostCode</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="create draft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DATE" required="false" key="false" section="RecordInformation" to="triDateDA"/>
+        <mapping from="ORG_REF" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triOrganizationRefTX"/>
+        <mapping from="COST_CENTER" required="true" key="false" section="RecordInformation" to="triCostCenterTX"/>
+        <mapping from="ID" required="false" key="false" section="RecordInformation" to="triIdTX"/>
+        <mapping from="SEPARATOR" required="false" key="false" section="RecordInformation" to="triSeparatorLI"/>
+        <mapping from="ACCOUNT_TYPE" required="false" key="false" section="RecordInformation" to="triAccountingTypeLI"/>
+        <mapping from="COST_TYPE" required="true" key="false" section="RecordInformation" to="triCostTypeLI"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="TechnologyAsset">
+      <worksheetName>TechnologyAssetData</worksheetName>
+      <module>triAsset</module>
+      <objectType>triTechnologyAssets</objectType>
+      <gui>triTechnologyAssets</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+        <action from="retired" to="bypass triRetired" label="Retired"/>
+        <action from="draft" to="bypass triDraft" label="Draft"/>
+        <action from="active" to="bypass triActive" label="Active"/>
+        <action from="revision in progress" to="bypass triRevision" label="Revision In Progress"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="CPU_COUNT" required="false" key="false" section="RecordInformation" to="triCPUCountNU"/>
+        <mapping from="CPU_SPEED" required="false" key="false" section="RecordInformation" to="triCPUSpeedNU"/>
+        <mapping from="CPU_TYPE" required="false" key="false" section="RecordInformation" to="triCPUTypeLI"/>
+        <mapping from="CPU_VERSION" required="false" key="false" section="RecordInformation" to="triCPUVersionTX"/>
+        <mapping from="OPERATING_SYSTEM" required="false" key="false" section="RecordInformation" to="triOperatingSystemLI"/>
+        <mapping from="MEMORY" required="true" key="false" section="RecordInformation" to="triMemoryNU"/>
+        <mapping from="DISK_SIZE" required="false" key="false" section="RecordInformation" to="triDiskSizeNU"/>
+        <mapping from="SERVICE_PACK" required="false" key="false" section="RecordInformation" to="triServicePackTX"/>
+        <mapping from="BUILD_NUM" required="false" key="false" section="RecordInformation" to="triBuildNumTX"/>
+        <mapping from="OS_INSTALL_DIREC" required="false" key="false" section="RecordInformation" to="triOpSysInstallDirectoryTX"/>
+        <mapping from="OWNERSHIP_CLASS" required="false" key="false" section="RecordInformation" to="triAssetOwnershipStatusCL"/>
+        <mapping from="PRIMARY_LOC" locSection="RecordInformation" locField="triPathTX" required="false" key="false" section="RecordInformation" to="triPrimaryLocationTX"/>
+        <mapping from="SPEC_NAME" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triSpecNameTX"/>
+        <mapping from="MODEL_NUM" required="true" key="false" section="RecordInformation" to="triModelNumTX"/>
+        <mapping from="BRAND" required="false" key="false" section="RecordInformation" to="triBrandCL"/>
+        <mapping from="MAINTENANCE_PRIORITY" required="false" key="false" section="RecordInformation" to="triMaintenancePriorityCL"/>
+        <mapping from="WIDTH" required="false" key="false" section="RecordInformation" to="triWidthNU"/>
+        <mapping from="HEIGHT" required="false" key="false" section="RecordInformation" to="triHeightNU"/>
+        <mapping from="DEPTH" required="false" key="false" section="RecordInformation" to="triDepthNU"/>
+        <mapping from="WEIGHT" required="false" key="false" section="RecordInformation" to="triWeightNU"/>
+        <mapping from="CURRENCY" required="false" key="false" section="RecordInformation" to="triCurrencyUO"/>
+        <mapping from="ASSET_CONDITION" required="false" key="false" section="RecordInformation" to="triConditionLI"/>
+        <mapping from="LIFE_EXPECTANCY" required="false" key="false" section="RecordInformation" to="triLifeExpectancyDU"/>
+        <mapping from="ACTIVE_START_DATE" required="false" key="false" section="RecordInformation" to="triActiveStartDA"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>TechnologyAsset</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Used By</forwardString>
+          <reverseString>Uses</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+    
+    <importMetaData id="Vehicle">
+      <worksheetName>VehicleData</worksheetName>
+      <module>triAsset</module>
+      <objectType>triVehicles</objectType>
+      <gui>triVehicles</gui>
+      <queryFilterId>default</queryFilterId>
+      <!-- This is a mapping for the transition and status updates.
+      If you want to bypass the state transitions, and just set a 
+      state, just type 'bypass [state name]' in the 'to' attribute.
+      The from column corresponds with the STATUS column in the Excel
+      document.-->
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+        <action from="retired" to="bypass triRetired" label="Retired"/>
+        <action from="draft" to="bypass triDraft" label="Draft"/>
+        <action from="active" to="bypass triActive" label="Active"/>
+        <action from="revision in progress" to="bypass triRevision" label="Revision In Progress"/>
+      </actions>
+      <!-- This is the data mapping from the external Excel column
+      names to the internal TRIRIGA fields. Special attributes are
+      needed for locator fields, 'locSection' and 'locField'. These
+      are the fields that the locator field maps to. The key 
+      attribute is determine which fields are used when looking up
+      if existing records exist.-->
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="VIN" required="false" key="false" section="RecordInformation" to="triVINTX"/>
+        <mapping from="YEAR" required="false" key="false" section="RecordInformation" to="triYearTX"/>
+        <mapping from="LIC_PLATE_STATE" required="false" key="false" section="RecordInformation" to="triTagStateTX"/>
+        <mapping from="LIC_PLATE_NUM" required="false" key="false" section="RecordInformation" to="triTAGNoTX"/>
+        <mapping from="OWNERSHIP_CLASS" required="false" key="false" section="RecordInformation" to="triAssetOwnershipCL"/>
+        <mapping from="PRIMARY_LOC" locSection="RecordInformation" locField="triPathTX" required="false" key="false" section="RecordInformation" to="triPrimaryLocationTX"/>
+        <mapping from="SPEC_NAME" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triSpecNameTX"/>
+        <mapping from="MODEL_NUM" required="false" key="false" section="RecordInformation" to="triModelNumTX"/>
+        <mapping from="BRAND" required="false" key="false" section="RecordInformation" to="triBrandCL"/>
+        <mapping from="MAINTENANCE_PRIORITY" required="false" key="false" section="RecordInformation" to="triMaintenancePriorityCL"/>
+        <mapping from="WIDTH" required="false" key="false" section="RecordInformation" to="triWidthNU"/>
+        <mapping from="HEIGHT" required="false" key="false" section="RecordInformation" to="triHeightNU"/>
+        <mapping from="DEPTH" required="false" key="false" section="RecordInformation" to="triDepthNU"/>
+        <mapping from="WEIGHT" required="false" key="false" section="RecordInformation" to="triWeightNU"/>
+        <mapping from="CAPACITY" required="false" key="false" section="RecordInformation" to="triCapacityTX"/>
+        <mapping from="SEER" required="false" key="false" section="RecordInformation" to="triSEERTX"/>
+        <mapping from="CURRENCY" required="true" key="false" section="RecordInformation" to="triCurrencyUO"/>
+        <mapping from="ASSET_CONDITION" required="false" key="false" section="RecordInformation" to="triConditionLI"/>
+        <mapping from="ACTIVE_START_DATE" required="false" key="false" section="RecordInformation" to="triActiveStartDA"/>
+        <mapping from="LIFE_EXPECTANCY" required="false" key="false" section="RecordInformation" to="triLifeExpectancyDU"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Vehicle</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Used By</forwardString>
+          <reverseString>Uses</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Contact Role For Asset Lease">
+      <worksheetName>Contacts4AssetLeaseData</worksheetName>
+      <module>triIntermediate</module>
+      <objectType>triContactRole</objectType>
+      <gui>triContactRole</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="active" to="bypass triActive" label="Draft" to2="cstRioTransform" label2="Active"/>
+        <action from="save" to="cstRioTransform" label="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="true"/>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="true">
+          <srcMetaDataId>Contact Role For Asset Lease</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Has Contact with Role</forwardString>
+          <reverseString>Contact with Role For</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="People ::" type="smart section" required="true">
+          <srcMetaDataId>Contact Role For Asset Lease</srcMetaDataId>
+          <dstMetaDataId>People</dstMetaDataId>
+          <forwardString/>
+          <reverseString/>
+          <smartSectionName>triPeople</smartSectionName>
+        </relationship>
+        <relationship id="Role ::" type="smart section" required="true">
+          <srcMetaDataId>Contact Role For Asset Lease</srcMetaDataId>
+          <dstMetaDataId>Role</dstMetaDataId>
+          <forwardString/>
+          <reverseString/>
+          <smartSectionName>triRole</smartSectionName>
+        </relationship>
+      </relationships>
+    </importMetaData>	
+
+    <importMetaData id="People">
+      <worksheetName>PeopleData</worksheetName>
+      <module>triPeople</module>
+      <objectType>triPeople</objectType>
+      <gui></gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="Detail" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="Detail" to="triNameTX"/>
+        <mapping from="ID" required="true" key="true" section="Detail" to="triIdTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Employee">
+      <worksheetName>EmployeeData</worksheetName>
+      <module>triPeople</module>
+      <objectType>triPeople</objectType>
+      <gui>triEmployee</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="Detail" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="Detail" to="triNameTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>	
+
+    <importMetaData id="Consultant">
+      <worksheetName>ConsultantData</worksheetName>
+      <module>triPeople</module>
+      <objectType>triPeople</objectType>
+      <gui>triConsultant</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="Detail" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="Detail" to="triNameTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>	
+
+    <importMetaData id="External Contact">
+      <worksheetName>ExternalContactData</worksheetName>
+      <module>triPeople</module>
+      <objectType>triPeople</objectType>
+      <gui>triExternalContact</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="Detail" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="Detail" to="triNameTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>	
+
+    <importMetaData id="Role">
+      <worksheetName>RoleData</worksheetName>
+      <module>Classification</module>
+      <objectType>triRole</objectType>
+      <gui>triRoles</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>	
+
+    <importMetaData id="Building Equipment">
+      <worksheetName>BuildEquiptData</worksheetName>
+      <module>triAsset</module>
+      <objectType>triBuildingEquipment</objectType>
+      <gui>triBuildingEquipment</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+        <action from="retired" to="bypass triRetired" label="Retired"/>
+        <action from="draft" to="bypass triDraft" label="Draft"/>
+        <action from="active" to="bypass triActive" label="Active"/>
+        <action from="revision in progress" to="bypass triRevision" label="Revision In Progress"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="SERIAL_NUM" required="false" key="false" section="RecordInformation" to="triSerialNumTX"/>
+        <mapping from="PRIMARY_LOCATION_PATH" locSection="RecordInformation" locField="triPathTX" required="false" key="false" section="RecordInformation" to="triPrimaryLocationTX"/>
+        <mapping from="SPEC_NAME" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triSpecNameTX"/>
+        <mapping from="MODEL_NUM" required="false" key="false" section="RecordInformation" to="triModelNumTX"/>
+        <mapping from="BRAND" required="false" key="false" section="RecordInformation" to="triBrandCL"/>
+        <mapping from="BUILDING_SYSTEM" required="false" key="false" section="RecordInformation" to="triBuildingSystemCL"/>
+        <mapping from="MAINTENANCE_PRIORITY" required="false" key="false" section="RecordInformation" to="triMaintenancePriorityCL"/>
+        <mapping from="WIDTH" required="false" key="false" section="RecordInformation" to="triWidthNU"/>
+        <mapping from="HEIGHT" required="false" key="false" section="RecordInformation" to="triHeightNU"/>
+        <mapping from="DEPTH" required="false" key="false" section="RecordInformation" to="triDepthNU"/>
+        <mapping from="CAPACITY" required="false" key="false" section="RecordInformation" to="triCapacityTX"/>
+        <mapping from="SEER" required="false" key="false" section="RecordInformation" to="triSEERTX"/>
+        <mapping from="VOLTAGE" required="false" key="false" section="RecordInformation" to="triVoltageTX"/>
+        <mapping from="AMPS" required="false" key="false" section="RecordInformation" to="triAmpsTX"/>
+        <mapping from="BTUH" required="false" key="false" section="RecordInformation" to="triBtuHTX"/>
+        <mapping from="AFUE" required="false" key="false" section="RecordInformation" to="triAFUETX"/>
+        <mapping from="FILTER_SIZE" required="false" key="false" section="RecordInformation" to="triFilterSizeTX"/>
+        <mapping from="CONDITION" required="false" key="false" section="RecordInformation" to="triConditionLI"/>
+        <mapping from="CURRENCY" required="true" key="false" section="RecordInformation" to="triCurrencyUO"/>
+        <mapping from="ACTIVE_START_DATE" required="false" key="false" section="RecordInformation" to="triActiveStartDA"/>
+        <mapping from="LIFE_EXPECTANCY" required="false" key="false" section="RecordInformation" to="triLifeExpectancyDU"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Building Equipment</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Used By</forwardString>
+          <reverseString>Uses</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>	
+
+    <importMetaData id="Office Equipment">
+      <worksheetName>OfficeEquiptData</worksheetName>
+      <module>triAsset</module>
+      <objectType>triOfficeEquipment</objectType>
+      <gui>triOfficeEquipment</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+        <action from="retired" to="bypass triRetired" label="Retired"/>
+        <action from="draft" to="bypass triDraft" label="Draft"/>
+        <action from="active" to="bypass triActive" label="Active"/>
+        <action from="revision in progress" to="bypass triRevision" label="Revision In Progress"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="SERIAL_NUM" required="false" key="false" section="RecordInformation" to="triSerialNumTX"/>
+        <mapping from="PRIMARY_LOCATION_PATH" locSection="RecordInformation" locField="triPathTX" required="false" key="false" section="RecordInformation" to="triPrimaryLocationTX"/>
+        <mapping from="SPEC_NAME" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triSpecNameTX"/>
+        <mapping from="MODEL_NUM" required="false" key="false" section="RecordInformation" to="triModelNumTX"/>
+        <mapping from="BRAND" required="false" key="false" section="RecordInformation" to="triBrandCL"/>
+        <mapping from="BUILDING_SYSTEM" required="false" key="false" section="RecordInformation" to="triBuildingSystemCL"/>
+        <mapping from="MAINTENANCE_PRIORITY" required="false" key="false" section="RecordInformation" to="triMaintenancePriorityCL"/>
+        <mapping from="WIDTH" required="false" key="false" section="RecordInformation" to="triWidthNU"/>
+        <mapping from="HEIGHT" required="false" key="false" section="RecordInformation" to="triHeightNU"/>
+        <mapping from="DEPTH" required="false" key="false" section="RecordInformation" to="triDepthNU"/>
+        <mapping from="WEIGHT" required="false" key="false" section="RecordInformation" to="triWeightNU"/>	
+        <mapping from="MEMORY" required="false" key="false" section="RecordInformation" to="triMemoryNU"/>
+        <mapping from="DUTY_CYCLE" required="false" key="false" section="RecordInformation" to="triDutyCycleTX"/>
+        <mapping from="MEDIA_FEEDERS" required="false" key="false" section="RecordInformation" to="triMediaFeedersTX"/>
+        <mapping from="PRINT_RESOLUTION" required="false" key="false" section="RecordInformation" to="triPrintResTX"/>
+        <mapping from="PRINT_SPEED" required="false" key="false" section="RecordInformation" to="triPrintSpeedTX"/>
+        <mapping from="COPY_RESOLUTION" required="false" key="false" section="RecordInformation" to="triCopyResTX"/>
+        <mapping from="COPY_SPEED" required="false" key="false" section="RecordInformation" to="triCopySpeedTX"/>
+        <mapping from="MAX_NUMBER_COPIES" required="false" key="false" section="RecordInformation" to="triCopyMaxNU"/>
+        <mapping from="FAX_RESOLUTION" required="false" key="false" section="RecordInformation" to="triFaxResolutionTX"/>
+        <mapping from="FAX_SPEED" required="false" key="false" section="RecordInformation" to="triFaxSpeedTX"/>
+        <mapping from="FAX_MEMORY" required="false" key="false" section="RecordInformation" to="triFaxMemoryTX"/>
+        <mapping from="SCANNER_TYPE" required="false" key="false" section="RecordInformation" to="triScanTypeTX"/>
+        <mapping from="SCANNER_OPTICAL_RESOLUTION" required="false" key="false" section="RecordInformation" to="triScanResOptTX"/>
+        <mapping from="SCANNER_ENHANCED_RESOLUTION" required="false" key="false" section="RecordInformation" to="triScanResEnhTX"/>
+        <mapping from="IP_NAME" required="false" key="false" section="RecordInformation" to="triIPNameTX"/>
+        <mapping from="IP_ADDRESS" required="false" key="false" section="RecordInformation" to="triIPAddressTX"/>
+        <mapping from="IP_DOMAIN" required="false" key="false" section="RecordInformation" to="triIPDomainTX"/>
+        <mapping from="DOMAIN" required="false" key="false" section="RecordInformation" to="triNetworkDomainTX"/>
+        <mapping from="CONDITION" required="false" key="false" section="RecordInformation" to="triConditionLI"/>
+        <mapping from="ACTIVE_START_DATE" required="false" key="false" section="RecordInformation" to="triActiveStartDA"/>
+        <mapping from="LIFE_EXPECTANCY" required="false" key="false" section="RecordInformation" to="triLifeExpectancyDU"/>
+        <mapping from="BAR_CODE" required="false" key="false" section="RecordInformation" to="triBarCodeEntryTX"/>
+        <mapping from="CURRENCY" required="true" key="false" section="RecordInformation" to="triCurrencyUO"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Building Equipment</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Used By</forwardString>
+          <reverseString>Uses</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Asset Lease Acct Detail">
+      <worksheetName>AssetLeaseAcctDetailData</worksheetName>
+      <module>triContract</module>
+      <objectType>triAssetLease</objectType>
+      <gui>triAssetLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="save" to="cstRioTransformLA" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="ACCOUNTING_START_DATE" required="false" key="false" section="RecordInformation" to="triAccountingStartDateDA"/>
+        <mapping from="ACCOUNTING_END_DATE" required="false" key="false" section="RecordInformation" to="triAccountingEndDateDA"/>
+        <mapping from="INITIAL_LIABILITY_CARRYOVER_BALANCE" required="false" key="false" section="RecordInformation" to="triRentDeferredLiabilityCarryoverNU"/>
+        <mapping from="INITIAL_DIRECT_COSTS" required="false" key="false" section="RecordInformation" to="triInitialDirectCostsNU"/>
+        <mapping from="RESIDUAL_VALUE_GUARANTEE" required="false" key="false" section="RecordInformation" to="triResidualValueGuaranteeNU"/>
+        <mapping from="DISMANTLE_COST" required="false" key="false" section="RecordInformation" to="triDismantleCostNU"/>
+        <mapping from="LOCAL_REPORTING_REQUIRED" required="false" key="false" section="RecordInformation" to="triLocalReportingRequiredBL"/>
+        <mapping from="COST_CENTER" required="false" key="false" section="RecordInformation" to="triCostCenterTX"/>
+        <mapping from="SPEND_CATEGORY" required="false" key="false" section="RecordInformation" to="triSpendCategoryCL"/>
+        <mapping from="PAYMENT_TIMING" required="false" key="false" section="RecordInformation" to="triPaymentTimingLI"/>
+        <mapping from="DISCLOSURE" required="false" key="false" section="RecordInformation" to="tri10kDisclosureTX"/>
+        <mapping from="FASB_FAIR_VALUE_DETERMINABLE" required="false" key="false" section="RecordInformation" to="triFasbFairValueDeterminableLI"/>
+        <mapping from="FASB_OWNERSHIP_TRANSFER" required="false" key="false" section="RecordInformation" to="triLtOwnershipTransferLI"/>
+        <mapping from="FASB_BARGAIN_PURCHASE" required="false" key="false" section="RecordInformation" to="triLtBargainPurchaseLI"/>
+        <mapping from="FASB_BEGINS_LAST_25_PCT" required="false" key="false" section="RecordInformation" to="triFasbBeginsLast25PctLI"/>
+        <mapping from="FASB_LESSOR_INTEREST_KNOWN" required="false" key="false" section="RecordInformation" to="triFasbLessorInterestKnownLI"/>
+        <mapping from="FASB_IMPLICIT_INTEREST_RATE" required="false" key="false" section="RecordInformation" to="triFasbImplicitInterestRateNU"/>
+        <mapping from="FASB_EST_ECO_LIFE_ASSET" required="false" key="false" section="RecordInformation" to="triFasbEstEcoLifeAssetNU"/>
+        <mapping from="FASB_FAIR_MARKET_VALUE" required="false" key="false" section="RecordInformation" to="triFasbEstFMVofAssetNU"/>
+        <mapping from="IASB_RISK_REWARD_TRANSFER" required="false" key="false" section="triIFRSLeaseTreatment" to="triRiskRewardTransferLI"/>
+        <mapping from="IASB_OWNERSHIP_TRANSFER" required="false" key="false" section="triIFRSLeaseTreatment" to="triOwnershipTransferLI"/>
+        <mapping from="IASB_BARGAIN_PURCHASE" required="false" key="false" section="triIFRSLeaseTreatment" to="triBargainPurchaseLI"/>
+        <mapping from="IASB_NO_MAJOR_MODIFICATION" required="false" key="false" section="triIFRSLeaseTreatment" to="triAssetNoMajorModificationLI"/>
+        <mapping from="IASB_RISK_TRANSFER_CONDITION" required="false" key="false" section="triIFRSLeaseTreatment" to="triRiskTransferConditionLI"/>
+        <mapping from="IASB_LEASE_CANCELLATION" required="false" key="false" section="triIFRSLeaseTreatment" to="triLeaseCancellationLI"/>
+        <mapping from="IASB_RESIDUAL_VALUE" required="false" key="false" section="triIFRSLeaseTreatment" to="triResidualValueLI"/>
+        <mapping from="IASB_HAVE_RENEWAL_OPTION" required="false" key="false" section="triIFRSLeaseTreatment" to="triHaveRenewalOptionLI"/>
+        <mapping from="IASB_LESSOR_INTEREST_KNOWN" required="false" key="false" section="triIFRSLeaseTreatment" to="triLessorInterestKnownLI"/>
+        <mapping from="IASB_IMPLICIT_INTEREST_RATE" required="false" key="false" section="triIFRSLeaseTreatment" to="triImplicitInterestRateNU"/>
+        <mapping from="IASB_EST_ECO_LIFE_ASSET" required="false" key="false" section="triIFRSLeaseTreatment" to="triEstEcoLifeAssetNU"/>
+        <mapping from="IASB_FAIR_MARKET_VALUE" required="false" key="false" section="triIFRSLeaseTreatment" to="triEstFMVNU"/>
+        <mapping from="INCREMENTAL_BORROW_RATE" required="false" key="false" section="triLeaseGrowthAssumptions" to="triFasbIncrementalBorrowRateNU"/>
+        <mapping from="PERCENT_IS_MAINTENANCE" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsMaintenanceNU"/>
+        <mapping from="PERCENT_IS_TAX" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsTaxNU"/>
+        <mapping from="PERCENT_IS_OTHER" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsOtherNU"/>
+        <mapping from="PERCENT_IS_INSURANCE" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsInsuranceNU"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Tools And Test Equipment</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Used By</forwardString>
+          <reverseString>Uses</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Tools And Test Equipment">
+      <worksheetName>ToolTestEquiptData</worksheetName>
+      <module>triAsset</module>
+      <objectType>triToolsandTestEquipment</objectType>
+      <gui>triToolsandTestEquipment</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft" to2="bypass triRevision" label2="Revision In Progress"/>
+        <action from="retired" to="bypass triRetired" label="Retired"/>
+        <action from="draft" to="bypass triDraft" label="Draft"/>
+        <action from="active" to="bypass triActive" label="Active"/>
+        <action from="revision in progress" to="bypass triRevision" label="Revision In Progress"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="SERIAL_NUM" required="false" key="false" section="RecordInformation" to="triSerialNumTX"/>
+        <mapping from="PRIMARY_LOCATION_PATH" locSection="RecordInformation" locField="triPathTX" required="false" key="false" section="RecordInformation" to="triPrimaryLocationTX"/>
+        <mapping from="SPEC_NAME" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="RecordInformation" to="triSpecNameTX"/>
+        <mapping from="MODEL_NUM" required="false" key="false" section="RecordInformation" to="triModelNumTX"/>
+        <mapping from="BRAND" required="false" key="false" section="RecordInformation" to="triBrandCL"/>
+        <mapping from="BUILDING_SYSTEM" required="false" key="false" section="RecordInformation" to="triBuildingSystemCL"/>
+        <mapping from="MAINTENANCE_PRIORITY" required="false" key="false" section="RecordInformation" to="triMaintenancePriorityCL"/>
+        <mapping from="WIDTH" required="false" key="false" section="RecordInformation" to="triWidthNU"/>
+        <mapping from="HEIGHT" required="false" key="false" section="RecordInformation" to="triHeightNU"/>
+        <mapping from="DEPTH" required="false" key="false" section="RecordInformation" to="triDepthNU"/>
+        <mapping from="CAPACITY" required="false" key="false" section="RecordInformation" to="triCapacityTX"/>
+        <mapping from="SEER" required="false" key="false" section="RecordInformation" to="triSEERTX"/>
+        <mapping from="VOLTAGE" required="false" key="false" section="RecordInformation" to="triVoltageTX"/>
+        <mapping from="AMPS" required="false" key="false" section="RecordInformation" to="triAmpsTX"/>
+        <mapping from="BTUH" required="false" key="false" section="RecordInformation" to="triBtuHTX"/>
+        <mapping from="AFUE" required="false" key="false" section="RecordInformation" to="triAFUETX"/>
+        <mapping from="FILTER_SIZE" required="false" key="false" section="RecordInformation" to="triFilterSizeTX"/>
+        <mapping from="CONDITION" required="false" key="false" section="RecordInformation" to="triConditionLI"/>
+        <mapping from="CURRENCY" required="true" key="false" section="RecordInformation" to="triCurrencyUO"/>
+        <mapping from="ACTIVE_START_DATE" required="false" key="false" section="RecordInformation" to="triActiveStartDA"/>
+        <mapping from="LIFE_EXPECTANCY" required="false" key="false" section="RecordInformation" to="triLifeExpectancyDU"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Tools And Test Equipment</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Used By</forwardString>
+          <reverseString>Uses</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Specification ::" type="association" required="false">
+          <srcMetaDataId>Tools And Test Equipment</srcMetaDataId>
+          <dstMetaDataId>Tool Spec</dstMetaDataId>
+          <forwardString>Specification For</forwardString>
+          <reverseString/>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Document">
+      <worksheetName>DocumentData</worksheetName>
+      <module>Document</module>
+      <objectType>Document</objectType>
+      <gui>Document</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="FILE_NAME" required="true" key="true" section="General Info" to="Name"/>
+        <mapping from="DOCUMENT_TYPE" required="true" key="false" section="RecordInformation" to="triDocumentTypeCL"/>
+        <mapping from="DATE_CREATED" required="true" key="false" section="General Info" to="DM_DATE_CREATED"/>
+        <mapping from="DOCUMENT_NAME" required="true" key="false" section="General Info" to="DM_FILE_NAME"/>
+        <mapping from="DESCRIPTION" required="true" key="false" section="General Info" to="Description"/>
+        <mapping from="FILE_TYPE" required="true" key="false" section="General Info" to="DM_FILE_TYPE"/>
+        <mapping from="REVISION_DATE" required="true" key="false" section="RecordInformation" to="triDMRevisionDT"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Real Estate Lease :: Associated" type="association" required="false">
+          <srcMetaDataId>Document</srcMetaDataId>
+          <dstMetaDataId>Real Estate Lease</dstMetaDataId>
+          <forwardString>Associated</forwardString>
+          <reverseString>Associated To</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Real Estate Lease :: Document For" type="association" required="false">
+          <srcMetaDataId>Document</srcMetaDataId>
+          <dstMetaDataId>Real Estate Lease</dstMetaDataId>
+          <forwardString>Document For</forwardString>
+          <reverseString>Has Document</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="RE Lease Acct Data">
+      <worksheetName>RELeaseAcctData</worksheetName>
+      <module>triContract</module>
+      <objectType>triRealEstateContract</objectType>
+      <gui>triRealEstateLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="save" to="cstRioTransformLA" label="Draft Accounting In Review"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="ACCOUNTING_START_DATE" required="true" key="false" section="RecordInformation" to="triAccountingStartDateDA"/>
+        <mapping from="ACCOUNTING_END_DATE" required="true" key="false" section="RecordInformation" to="triAccountingEndDateDA"/>
+        <mapping from="INITIAL_LIABILITY_CARRYOVER_BALANCE" required="true" key="false" section="RecordInformation" to="triRentDeferredLiabilityCarryoverNU"/>
+        <mapping from="INITIAL_DIRECT_COSTS" required="true" key="false" section="RecordInformation" to="triInitialDirectCostsNU"/>
+        <mapping from="RESIDUAL_VALUE_GUARANTEE" required="false" key="false" section="RecordInformation" to="triResidualValueGuaranteeNU"/>
+        <mapping from="DISMANTLE_COST" required="false" key="false" section="RecordInformation" to="triDismantleCostNU"/>
+        <mapping from="LOCAL_REPORTING_REQUIRED" required="false" key="false" section="RecordInformation" to="triLocalReportingRequiredBL"/>
+        <mapping from="COST_CENTER" required="false" key="false" section="RecordInformation" to="triCostCenterTX"/>
+        <mapping from="ACCOUNTING_CALENDAR" required="true" key="false" section="RecordInformation" to="triAccountingCalendarCL"/>
+        <mapping from="SPEND_CATEGORY" required="false" key="false" section="RecordInformation" to="triSpendCategoryCL"/>
+        <mapping from="PAYMENT_TIMING" required="false" key="false" section="RecordInformation" to="triPaymentTimingLI"/>
+        <mapping from="DISCLOSURE" required="false" key="false" section="RecordInformation" to="tri10kDisclosureTX"/>
+        <mapping from="BUSINESS_ORG" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triBusinessUnitOrgTX"/>
+        <mapping from="FASB_LEASE_TYPE" required="true" key="false" section="RecordInformation" to="triFasbLeaseTypeLI"/>
+        <mapping from="FASB_FAIR_VALUE_DETERMINABLE" required="true" key="false" section="RecordInformation" to="triFasbFairValueDeterminableLI"/>
+        <mapping from="FASB_OWNERSHIP_TRANSFER" required="true" key="false" section="RecordInformation" to="triLtOwnershipTransferLI"/>
+        <mapping from="FASB_BARGAIN_PURCHASE" required="true" key="false" section="RecordInformation" to="triLtBargainPurchaseLI"/>
+        <mapping from="FASB_BEGINS_LAST_25_PCT" required="true" key="false" section="RecordInformation" to="triFasbBeginsLast25PctLI"/>
+        <mapping from="FASB_LESSOR_INTEREST_KNOWN" required="true" key="false" section="RecordInformation" to="triFasbLessorInterestKnownLI"/>
+        <mapping from="FASB_IMPLICIT_INTEREST_RATE" required="true" key="false" section="RecordInformation" to="triFasbImplicitInterestRateNU"/>
+        <mapping from="FASB_EST_ECO_LIFE_ASSET" required="true" key="false" section="RecordInformation" to="triFasbEstEcoLifeAssetNU"/>
+        <mapping from="FASB_FAIR_MARKET_VALUE" required="true" key="false" section="RecordInformation" to="triFasbEstFMVofBldgNU"/>
+        <mapping from="FASB_LAND_PERCENTAGE" required="true" key="false" section="RecordInformation" to="triFasbLandPercentageNU"/>
+        <mapping from="FASB_NO_UNCERTAINTIES" required="false" key="false" section="RecordInformation" to="triFasbNoUncertaintiesLI"/>
+        <mapping from="FASB_COLLECTIBILITY" required="false" key="false" section="RecordInformation" to="triFasbCollectibilityLI"/>
+        <mapping from="IS_SPECIALIZED_ASSET" required="true" key="false" section="RecordInformation" to="triLeaseClassQuestionLI"/>
+        <mapping from="INCREMENTAL_BORROW_RATE" required="true" key="false" section="triLeaseGrowthAssumptions" to="triFasbIncrementalBorrowRateNU"/>
+        <mapping from="LEASE_CLASS_DESCRIPTION" required="false" key="false" section="RecordInformation" to="triLeaseClassDescriptionTX"/>
+        <mapping from="PERCENT_IS_MAINTENANCE" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsMaintenanceNU"/>
+        <mapping from="PERCENT_IS_TAX" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsTaxNU"/>
+        <mapping from="PERCENT_IS_OTHER" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsOtherNU"/>
+        <mapping from="PERCENT_IS_INSURANCE" required="false" key="false" section="triRentComponentAssumptions" to="triPercentIsInsuranceNU"/>
+        <mapping from="PROJECT_RENT_PAYMENT" required="false" key="false" section="RecordInformation" to="triProjectRentPaymentBL"/>
+        <mapping from="IASB_LEASE_TYPE" required="false" key="false" section="triIFRSLeaseTreatment" to="triLeaseTypeLI"/>
+        <mapping from="IASB_RISK_REWARD_TRANSFER" required="true" key="false" section="triIFRSLeaseTreatment" to="triRiskRewardTransferLI"/>
+        <mapping from="IASB_OWNERSHIP_TRANSFER" required="true" key="false" section="triIFRSLeaseTreatment" to="triOwnershipTransferLI"/>
+        <mapping from="IASB_BARGAIN_PURCHASE" required="true" key="false" section="triIFRSLeaseTreatment" to="triBargainPurchaseLI"/>
+        <mapping from="IASB_NO_MAJOR_MODIFICATION" required="true" key="false" section="triIFRSLeaseTreatment" to="triAssetNoMajorModificationLI"/>
+        <mapping from="IASB_RISK_TRANSFER_CONDITION" required="true" key="false" section="triIFRSLeaseTreatment" to="triRiskTransferConditionLI"/>
+        <mapping from="IASB_SINGLE_UNIT" required="true" key="false" section="triIFRSLeaseTreatment" to="triSingleUnitLeaseClassLI"/>
+        <mapping from="IASB_LEASE_CANCELLATION" required="true" key="false" section="triIFRSLeaseTreatment" to="triLeaseCancellationLI"/>
+        <mapping from="IASB_RESIDUAL_VALUE" required="true" key="false" section="triIFRSLeaseTreatment" to="triResidualValueLI"/>
+        <mapping from="IASB_HAVE_RENEWAL_OPTION" required="true" key="false" section="triIFRSLeaseTreatment" to="triHaveRenewalOptionLI"/>
+        <mapping from="IASB_LESSOR_INTEREST_KNOWN" required="false" key="false" section="triIFRSLeaseTreatment" to="triLessorInterestKnownLI"/>
+        <mapping from="IASB_IMPLICIT_INTEREST_RATE" required="false" key="false" section="triIFRSLeaseTreatment" to="triImplicitInterestRateNU"/>
+        <mapping from="IASB_EST_ECO_LIFE_ASSET" required="false" key="false" section="triIFRSLeaseTreatment" to="triEstEcoLifeAssetNU"/>
+        <mapping from="IASB_FAIR_MARKET_VALUE" required="false" key="false" section="triIFRSLeaseTreatment" to="triEstFMVNU"/>
+        <mapping from="IASB_LAND_PERCENTAGE" required="false" key="false" section="triIFRSLeaseTreatment" to="triLandPercentageNU"/>
+        <mapping from="IASB_NO_UNCERTAINTIES" required="false" key="false" section="triIFRSLeaseTreatment" to="triNoUncertaintiesLI"/>
+        <mapping from="IASB_COLLECTIBILITY" required="false" key="false" section="triIFRSLeaseTreatment" to="triCollectibilityLI"/>
+        <mapping from="IASB_BEGINS_LAST_25_PCT" required="false" key="false" section="triIFRSLeaseTreatment" to="triBeginsLast25PctLI"/>
+      </dataMap>
+      <relationships>
+        <relationship id="LIKELY TERM OPTION ::" type="smart section" required="false">
+          <srcMetaDataId>RE Lease Acct Data</srcMetaDataId>
+          <dstMetaDataId>Option</dstMetaDataId>
+          <forwardString></forwardString>
+          <reverseString></reverseString>
+          <smartSectionName>triLikelyTermOption</smartSectionName>
+        </relationship>	
+      </relationships>
+    </importMetaData>
+
+
+    <!-->RE Lease VLM-122 & VLM-183<!-->
+    <importMetaData id="RELease">
+      <worksheetName>RELeaseData</worksheetName>
+      <module>triContract</module>
+      <objectType>triRealEstateContract</objectType>
+      <gui>triRealEstateLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="draft" to="triCreateDraft" label="Draft" to2="cstRioTransform" label2="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="LEGACY_ID" required="false" key="false" section="RecordInformation" to="triLegacyIDTX"/>
+        <mapping from="CURRENCY" required="false" key="false" section="RecordInformation" to="triCurrencyUO"/>
+        <mapping from="AREA_UNITS" required="false" key="false" section="RecordInformation" to="triAreaUO"/>
+        <mapping from="CARBON_REPORTING_UOM" required="false" key="false" section="RecordInformation" to="triCarbonCalcUnitsUO"/>
+        <mapping from="ENERGY_REPORTING_UOM" required="false" key="false" section="RecordInformation" to="triEnergyReportingUO"/>
+        <mapping from="LEASE_TYPE" required="false" key="false" section="RecordInformation" to="triLeaseTypeCL"/>
+        <mapping from="LEASE_CATEGORY" required="false" key="false" section="RecordInformation" to="triLeaseClassCL"/>
+        <mapping from="PRIMARY_USE" required="false" key="false" section="RecordInformation" to="triContractPrimaryUseCL"/>
+        <mapping from="BASE_LEASE_RATE" required="false" key="false" section="RecordInformation" to="triBaseLeaseRateNU"/>
+        <mapping from="LEASE_BASE_YEAR" required="false" key="false" section="RecordInformation" to="triLseBaseYearNU"/>
+        <mapping from="COLOCATION" required="false" key="false" section="RecordInformation" to="triCoLocationBL"/>
+        <mapping from="CONVERSION_GROUP" required="false" key="false" section="RecordInformation" to="triConversionGroupLI"/>
+        <mapping from="CURRENCY_EXCHANGE_DATE" required="false" key="false" section="RecordInformation" to="triExchangeDT"/>
+        <mapping from="CONTRACT_STATUS" required="false" key="false" section="RecordInformation" to="triContractStatusCL"/>
+        <mapping from="MEMORANDUM_OF_LEASE" required="false" key="false" section="RecordInformation" to="triMoLBL"/>
+        <mapping from="RULES_AND_REGULATIONS" required="false" key="false" section="RecordInformation" to="triRulesAndRegulationBL"/>
+        <mapping from="FAIR_MARKET_VALUE_DETERMINABLE" required="false" key="false" section="RecordInformation" to="triCostFairMktValueDeterminableBL"/>
+        <mapping from="MARKET_BASED" required="false" key="false" section="RecordInformation" to="triMarketBasedBL"/>
+        <mapping from="ACCOUNTING_TYPE" required="false" key="false" section="RecordInformation" to="triAccountingTypeLI"/>
+        <mapping from="PAYMENT_ON_HOLD" required="false" key="false" section="RecordInformation" to="cstPaymentOnHoldBL"/>
+        <mapping from="PAYMENT_TIMING" required="false" key="false" section="RecordInformation" to="triPaymentTimingLI"/>
+        <mapping from="COMMENCEMENT_DATE" required="true" key="false" section="RecordInformation" to="triStartDA"/>
+        <mapping from="EXPIRATION_DATE" required="false" key="false" section="RecordInformation" to="triExpirationDA"/>
+        <mapping from="RENT_COMMENCEMENT_DATE" required="false" key="false" section="RecordInformation" to="triRentCommenceDA"/>
+        <mapping from="OCCUPANCY_DATE" required="false" key="false" section="RecordInformation" to="triMoveInDA"/>
+        <mapping from="VACATE_DATE" required="false" key="false" section="RecordInformation" to="triVacateDA"/>
+        <mapping from="INCEPTION_DATE" required="false" key="false" section="RecordInformation" to="triSignedDA"/>
+        <mapping from="ABSTRACTED_DATE" required="false" key="false" section="RecordInformation" to="triAbstractedDA"/>
+        <mapping from="LEGAL_NOTICE_DATE" required="false" key="false" section="RecordInformation" to="triExternalExpDA"/>
+        <mapping from="ORIGINAL_COMMENCEMENT_DATE" required="false" key="false" section="RecordInformation" to="triOriginalStartDA"/>
+        <mapping from="CONSTRUCTION_START_DATE" required="false" key="false" section="RecordInformation" to="triConstructionStartDA"/>
+        <mapping from="ORIGINAL_EXPIRATION_DATE" required="false" key="false" section="RecordInformation" to="triOriginalExpirationDA"/>
+        <mapping from="CONSTRUCTION_END_DATE" required="false" key="false" section="RecordInformation" to="triConstructionEndDA"/>
+        <mapping from="BUSINESS_UNIT_ORG" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triBusinessUnitOrgTX"/>
+        <mapping from="ANNUAL_COST_OF_OPERATIONS" required="false" key="false" section="RecordInformation" to="triSMSupCostOfOpsNU"/>
+        <mapping from="ANNUAL_FIXED_ASSETS_COSTS" required="false" key="false" section="RecordInformation" to="triSMSupFixedAssetsCostsNU"/>
+        <mapping from="ANNUAL_ENERGY_USE" required="false" key="false" section="RecordInformation" to="triSMSupEnergyUseNU"/>
+        <mapping from="ANNUAL_TOTAL_CO2E" required="false" key="false" section="RecordInformation" to="triSMSupCO2EquityShareNU"/>
+        <mapping from="CLIENT_REGION" required="false" key="false" section="RecordInformation" to="cstClientRegionCL"/>
+        <mapping from="REMIT_TO_LOOKUP" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triRemitToLookUpTX"/>
+        <mapping from="REMIT_TO_ORGANIZATION_NAME" required="false" key="false" section="RecordInformation" to="triRemitToOrganizationNameTX"/>
+        <mapping from="REMIT_TO_PAYABLE_TO" required="false" key="false" section="RecordInformation" to="triRemitToPayableToTX"/>
+        <mapping from="REMIT_TO_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triRemitToVendorNumberTX"/>
+        <mapping from="REMIT_TO_ADDRESS" required="false" key="false" section="RecordInformation" to="triRemitToAddressTX"/>
+        <mapping from="REMIT_TO_CITY" required="false" key="false" section="RecordInformation" to="triRemitToCityTX"/>
+        <mapping from="REMIT_TO_STATE" required="false" key="false" section="RecordInformation" to="triRemitToStateTX"/>
+        <mapping from="REMIT_TO_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triRemitToZipPostalTX"/>
+        <mapping from="REMIT_TO_COUNTRY" required="false" key="false" section="RecordInformation" to="triRemitToCountryTX"/>
+        <mapping from="TENANT_ORG_LOOKUP" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triTenantContactOrgLookupTX"/>
+        <mapping from="TENANT_ADDRESS" required="false" key="false" section="RecordInformation" to="triTenantAddressTX"/>
+        <mapping from="TENANT_PO_BOX" required="false" key="false" section="RecordInformation" to="triTNPostBoxTX"/>
+        <mapping from="TENANT_CITY" required="false" key="false" section="RecordInformation" to="triTenantCityTX"/>
+        <mapping from="TENANT_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triTNCitySubDivisionTX"/>
+        <mapping from="TENANT_STATE" required="false" key="false" section="RecordInformation" to="triTenantStateTX"/>
+        <mapping from="TENANT_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triTenantZipPostalTX"/>
+        <mapping from="TENANT_COUNTRY" required="false" key="false" section="RecordInformation" to="triTenantCountryTX"/>
+        <mapping from="TENANT_ORG_CONTACT_LOOKUP" required="false" key="false" locSection="General" locField="triNameTX" section="RecordInformation" to="triTenantContactLookupTX"/>
+        <mapping from="TENANT_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triTenantContactFullNameTX"/>
+        <mapping from="TENANT_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triTenantContactFaxTX"/>
+        <mapping from="TENANT_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triTenantContactWorkPhoneTX"/>
+        <mapping from="TENANT_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triTenantContacteMailTX"/>
+        <mapping from="TENANT_CONTACT_CUSTOMER_NUMBER" required="false" key="false" section="RecordInformation" to="triTenantVendorNumberTX"/>
+        <mapping from="LANDLORD_ORG_LOOKUP" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triLandLordOwnerOrgLookupTX"/>
+        <mapping from="LANDLORD_LEGAL_NAME" required="false" key="false" section="RecordInformation" to="triLandlordLegalNameTX"/>
+        <mapping from="LANDLORD_FEDERAL_ID" required="false" key="false" section="RecordInformation" to="triLandLordOwnerFedIDTX"/>
+        <mapping from="LANDLORD_STATE_COUNTRY_INCORP" required="false" key="false" section="RecordInformation" to="triLandLordLLIncorpGeoTX"/>
+        <mapping from="LANDLORD_ADDRESS" required="false" key="false" section="RecordInformation" to="triLandLordAddressTX"/>
+        <mapping from="LANDLORD_CITY" required="false" key="false" section="RecordInformation" to="triLandLordOwnerCityTX"/>
+        <mapping from="LANDLORD_PO_BOX" required="false" key="false" section="RecordInformation" to="triLLPostBoxTX"/>
+        <mapping from="LANDLORD_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triLLCitySubDivisionTX"/>
+        <mapping from="LANDLORD_STATE" required="false" key="false" section="RecordInformation" to="triLandLordStateTX"/>
+        <mapping from="LANDLORD_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triLandLordZipPostalTX"/>
+        <mapping from="LANDLORD_COUNTRY" required="false" key="false" section="RecordInformation" to="triLandLordOwnerCountryTX"/>
+        <mapping from="LANDLORD_ORG_CONTACT_LOOKUP" required="false" key="false" locSection="General" locField="triNameTX" section="RecordInformation" to="triLandLordOwnerLookupTX"/>
+        <mapping from="LANDLORD_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triLandLordOwnerNameTX"/>
+        <mapping from="LANDLORD_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triLandLordOwnerFaxTX"/>
+        <mapping from="LANDLORD_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triLandLordOwnerPhoneTX"/>
+        <mapping from="LANDLORD_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triLandLordOwnerEmailTX"/>
+        <mapping from="LANDLORD_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triLandlordVendorNumberTX"/>
+        <mapping from="MANAGEMENT_ORG_LOOKUP" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triOtherOrganizationLookupTX"/>
+        <mapping from="MGMT_LEGAL_NAME" required="false" key="false" section="RecordInformation" to="triOtherContactLegalNameTX"/>
+        <mapping from="MGMT_FEDERAL_ID" required="false" key="false" section="RecordInformation" to="triOtherContactFedIDTX"/>
+        <mapping from="MGMT_STATE_COUNTRY_INCORP" required="false" key="false" section="RecordInformation" to="triOtherLLIncorpGeoTX"/>
+        <mapping from="MGMT_ADDRESS" required="false" key="false" section="RecordInformation" to="triOtherContactAddressTX"/>
+        <mapping from="MGMT_CITY" required="false" key="false" section="RecordInformation" to="triOtherContactCityTX"/>
+        <mapping from="MGMT_PO_BOX" required="false" key="false" section="RecordInformation" to="triMCPostBoxTX"/>
+        <mapping from="MGMT_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triMCCitySubDivisionTX"/>
+        <mapping from="MGMT_STATE" required="false" key="false" section="RecordInformation" to="triOtherContactStateProvTX"/>
+        <mapping from="MGMT_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triOtherContactZipPostalTX"/>
+        <mapping from="MGMT_COUNTRY" required="false" key="false" section="RecordInformation" to="triOtherContactCountryTX"/>
+        <mapping from="MANAGEMENT_ORG_CONTACT_LOOKUP" required="false" key="false" locSection="General" locField="triNameTX" section="RecordInformation" to="triOtherContactLookupTX"/>
+        <mapping from="MGMT_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triOtherContactNameTX"/>
+        <mapping from="MGMT_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triOtherContactFaxTX"/>
+        <mapping from="MGMT_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triOtherContactPhoneTX"/>
+        <mapping from="MGMT_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triOtherContactEmailTX"/>
+        <mapping from="MGMT_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triVendorNumberTX"/>
+        <mapping from="GUARANTOR_ORG_LOOKUP" required="false" key="false" locSection="General" locField="triPathTX" section="RecordInformation" to="triGuarantorOrganizationLookupTX"/>
+        <mapping from="GUARANTOR_LEGAL_NAME" required="false" key="false" section="RecordInformation" to="triGuarantorLegalNameTX"/>
+        <mapping from="GUARANTOR_FEDERAL_ID" required="false" key="false" section="RecordInformation" to="triGuarantorFedIDTX"/>
+        <mapping from="GUARANTOR_STATE_COUNTRY_INCORP" required="false" key="false" section="RecordInformation" to="triGuarantorIncorpGeoTX"/>
+        <mapping from="GUARANTOR_ADDRESS" required="false" key="false" section="RecordInformation" to="triGUAdressTX"/>
+        <mapping from="GUARANTOR_CITY" required="false" key="false" section="RecordInformation" to="triGUCityTX"/>
+        <mapping from="GUARANTOR_PO_BOX" required="false" key="false" section="RecordInformation" to="triGUPostBoxTX"/>
+        <mapping from="GUARANTOR_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triGUCitySubDivisionTX"/>
+        <mapping from="GUARANTOR_STATE" required="false" key="false" section="RecordInformation" to="triGUStateTX"/>
+        <mapping from="GUARANTOR_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triGUZipPostalTX"/>
+        <mapping from="GUARANTOR_COUNTRY" required="false" key="false" section="RecordInformation" to="triGUCountryTX"/>
+        <mapping from="GUARANTOR_ORG_CONTACT_LOOKUP" required="false" key="false" locSection="General" locField="triNameTX" section="RecordInformation" to="triGuarantorContactLookupTX"/>
+        <mapping from="GUARANTOR_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triGuarantorContactNameTX"/>
+        <mapping from="GUARANTOR_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triGuarantorContactFaxTX"/>
+        <mapping from="GUARANTOR_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triGuarantorContactPhoneTX"/>
+        <mapping from="GUARANTOR_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triGuarantorContactEmailTX"/>
+        <mapping from="GUARANTOR_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triGUVendorNumberTX"/>
+        <mapping from="PROVIDER_TYPE" required="true" key="false" section="RecordInformation" to="triProviderTypeLI"/>
+        <mapping from="ACCOUNTING_CALENDAR" required="true" key="false" section="RecordInformation" to="triAccountingCalendarCL"/>
+      </dataMap>
+      <relationships>
+        <relationship id="PrimaryLocation ::" type="smart section" required="false">
+          <srcMetaDataId>RELease</srcMetaDataId>
+          <dstMetaDataId>Location</dstMetaDataId>
+          <forwardString></forwardString>
+          <reverseString></reverseString>
+          <smartSectionName>triPrimaryLocation</smartSectionName>
+        </relationship>
+        <relationship id="ParentLease ::" type="smart section" required="false">
+          <srcMetaDataId>RELease</srcMetaDataId>
+          <dstMetaDataId>RELease</dstMetaDataId>
+          <forwardString></forwardString>
+          <reverseString></reverseString>
+          <smartSectionName>triParentRealEstateContract</smartSectionName>
+        </relationship>
+        <relationship id="LocationCostCode ::" type="smart section" required="false">
+          <srcMetaDataId>RELease</srcMetaDataId>
+          <dstMetaDataId>Location Cost Code</dstMetaDataId>
+          <forwardString></forwardString>
+          <reverseString></reverseString>
+          <smartSectionName>triLocationCostCode</smartSectionName>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <!-->CS Premise Locations VLM-122<!-->    
+    <importMetaData id="REContract Location">
+      <worksheetName>REContractLocationData</worksheetName>
+      <module>triIntermediate</module>
+      <objectType>triREContractLocations</objectType>
+      <gui>triREContractLocations</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="active" to="bypass triActive" label="Active" to2="cstRioTransformActive" label2="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="General" to="cstUPIDTX"/>
+        <mapping from="NAME" required="true" key="true" section="General" to="triNameTX"/>
+        <mapping from="PREMISE_DESCRIPTION" required="false" key="false" section="General" to="triDescriptionTX"/>
+        <mapping from="SPACE_TYPE" required="false" key="false" section="General" to="triContractPrimaryUseCL"/>
+        <mapping from="EFFECTIVE_FROM" required="false" key="false" section="General" to="triEffectiveStartDA"/>
+        <mapping from="EFFECTIVE_TO" required="false" key="false" section="General" to="triEffectiveEndDA"/>
+        <mapping from="LEASE_RENTABLE_SQFT" required="false" key="false" section="General" to="triLeaseRentableAreaNU"/>
+        <mapping from="LEASE_USABLE_SQFT" required="false" key="false" section="General" to="triLeaseUsableAreaNU"/>
+        <mapping from="ALLOCATION_PERCENT" required="false" key="false" section="General" to="triLocAllocationPctNU"/>
+        <mapping from="PROPORTIONATE_SHARE" required="false" key="false" section="General" to="triProportionateShareNU"/>
+        <mapping from="INCLUDED_IN_RENT" required="false" key="false" section="General" to="triIncludedInRentBL"/>
+        <mapping from="DOCUMENT_TYPE" required="false" key="false" section="General" to="triLegalDocumentTypeCL"/>
+        <mapping from="SECTION" required="false" key="false" section="General" to="triSectionTX"/>
+        <mapping from="PAGE" required="false" key="false" section="General" to="triPageTX"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Location ::" type="smart section" required="false">
+          <srcMetaDataId>REContract Location</srcMetaDataId>
+          <dstMetaDataId>Location</dstMetaDataId>
+          <forwardString></forwardString>
+          <reverseString></reverseString>
+          <smartSectionName>triLocation</smartSectionName>
+        </relationship>  
+        <relationship id="RE Lease ::" type="association" required="false">
+          <srcMetaDataId>REContract Location</srcMetaDataId>
+          <dstMetaDataId>RELease</dstMetaDataId>
+          <forwardString>Location Area For</forwardString>
+          <reverseString>Has Location Area</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <!-->VLM-183 Location<!-->
+    <importMetaData id="Location">
+      <worksheetName>LocationData</worksheetName>
+      <module>Location</module>
+      <objectType></objectType>
+      <gui></gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="active" to="bypass triActive" label="Active" to2="cstRioTransformActive" label2="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="General" to="triNameTX"/>
+        <mapping from="PATH" required="false" key="false" section="General" to="triPathTX"/>
+      </dataMap>
+      <relationships>
+      </relationships>
+    </importMetaData>
+
+
+    <!-->Contact Role for RE Lease<!-->
+    <importMetaData id="Contact Role For RE Lease">
+      <worksheetName>Contacts4RELeaseData</worksheetName>
+      <module>triIntermediate</module>
+      <objectType>triContactRole</objectType>
+      <gui>triContactRole</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="active" to="bypass triActive" label="Draft" to2="cstRioTransform" label2="Active"/>
+        <action from="save" to="cstRioTransform" label="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="true"/>
+      <relationships>
+        <relationship id="RE Lease ::" type="association" required="true">
+          <srcMetaDataId>Contact Role For RE Lease</srcMetaDataId>
+          <dstMetaDataId>RELease</dstMetaDataId>
+          <forwardString>Has Contact with Role</forwardString>
+          <reverseString>Contact with Role For</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="People ::" type="smart section" required="true">
+          <srcMetaDataId>Contact Role For RE Lease</srcMetaDataId>
+          <dstMetaDataId>People</dstMetaDataId>
+          <forwardString/>
+          <reverseString/>
+          <smartSectionName>triPeople</smartSectionName>
+        </relationship>
+        <relationship id="Role ::" type="smart section" required="true">
+          <srcMetaDataId>Contact Role For RE Lease</srcMetaDataId>
+          <dstMetaDataId>Role</dstMetaDataId>
+          <forwardString/>
+          <reverseString/>
+          <smartSectionName>triRole</smartSectionName>
+        </relationship>
+      </relationships>
+    </importMetaData> 
+
+    <importMetaData id="Asset Lease">
+      <worksheetName>AssetLeaseData</worksheetName>
+      <module>triContract</module>
+      <objectType>triAssetLease</objectType>
+      <gui>triAssetLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>		
+        <action from="draft" to="bypass triDraft" label="Draft" to2="cstRioTransform" label2="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="LEGAL_NAME" required="false" key="false" section="RecordInformation" to="triLegalNameTX"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="RecordInformation" to="triDescriptionTX"/>
+        <mapping from="CLIENT_REGION" required="false" key="false" section="RecordInformation" to="cstClientRegionCL"/>
+        <mapping from="CURRENCY" required="true" key="false" section="RecordInformation" to="triCurrencyUO"/>
+        <mapping from="ASSET_UNITS" required="false" key="false" section="RecordInformation" to="triUnitCountUO"/>
+        <mapping from="LEASE_TYPE" required="false" key="false" section="RecordInformation" to="triLeaseTypeCL"/>
+        <mapping from="MLA_REFERENCE" required="false" key="false" section="RecordInformation" to="cstMLAReferenceTX"/>
+        <mapping from="LEASE_CATEGORY" required="false" key="false" section="RecordInformation" to="triLeaseClassCL"/>
+        <mapping from="COMMENCEMENT_DATE" required="true" key="false" section="RecordInformation" to="triStartDA"/>
+        <mapping from="EXPIRATION_DATE" required="true" key="false" section="RecordInformation" to="triExpirationDA"/>
+        <mapping from="ORIGINAL_COMMENCEMENT_DATE" required="false" key="false" section="RecordInformation" to="triOriginalStartDA"/>
+        <mapping from="ORIGINAL_EXPIRATION_DATE" required="false" key="false" section="RecordInformation" to="triOriginalExpirationDA"/>
+        <mapping from="EXECUTION_DATE" required="false" key="false" section="RecordInformation" to="triSignedDA"/>
+        <mapping from="ACQUIRED_DATE" required="false" key="false" section="RecordInformation" to="triAcquiredDA"/>
+        <mapping from="ACCOUNTING_TYPE" required="false" key="false" section="RecordInformation" to="triAccountingTypeLI"/>
+        <mapping from="PAYMENT_TIMING" required="true" key="false" section="RecordInformation" to="triPaymentTimingLI"/>
+        <mapping from="CONTRACT_STATUS" required="false" key="false" section="RecordInformation" to="triContractStatusCL"/>
+        <mapping from="BASE_LEASE_RATE" required="false" key="false" section="RecordInformation" to="triBaseLeaseRateNU"/>
+        <mapping from="BUSINESS_UNIT" required="false" key="false" locSection="RecordInformation" locField="triPathTX" section="RecordInformation" to="triBusinessUnitOrgTX"/>
+        <mapping from="REMIT_ORG_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triPathTX" section="RecordInformation" to="triRemitToLookUpTX"/>
+        <mapping from="REMIT_PAYABLE_TO" required="false" key="false" section="RecordInformation" to="triRemitToPayableToTX"/>
+        <mapping from="REMIT_ORGANIZATION_NAME" required="false" key="false" section="RecordInformation" to="triRemitToOrganizationNameTX"/>
+        <mapping from="REMIT_TO_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triRemitToVendorNumberTX"/>
+        <mapping from="REMIT_ADDRESS" required="false" key="false" section="RecordInformation" to="triRemitToAddressTX"/>
+        <mapping from="REMIT_CITY" required="false" key="false" section="RecordInformation" to="triRemitToCityTX"/>
+        <mapping from="REMIT_STATE" required="false" key="false" section="RecordInformation" to="triRemitToStateTX"/>
+        <mapping from="REMIT_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triRemitToZipPostalTX"/>
+        <mapping from="REMIT_COUNTRY" required="false" key="false" section="RecordInformation" to="triRemitToCountryTX"/>
+        <mapping from="LESSEE_ORG_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triPathTX" section="RecordInformation" to="triTenantContactOrgLookupTX"/>
+        <mapping from="LESSEE_ADDRESS" required="false" key="false" section="RecordInformation" to="triTenantAddressTX"/>
+        <mapping from="LESSEE_PO_BOX" required="false" key="false" section="RecordInformation" to="triTNPostBoxTX"/>
+        <mapping from="LESSEE_CITY" required="false" key="false" section="RecordInformation" to="triTenantCityTX"/>
+        <mapping from="LESSEE_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triTNCitySubDivisionTX"/>
+        <mapping from="LESSEE_STATE" required="false" key="false" section="RecordInformation" to="triTenantStateTX"/>
+        <mapping from="LESSEE_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triTenantZipPostalTX"/>
+        <mapping from="LESSEE_COUNTRY" required="false" key="false" section="RecordInformation" to="triTenantCountryTX"/>
+        <mapping from="LESSEE_CONTACT_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triNameTX" section="RecordInformation" to="triTenantContactLookupTX"/>
+        <mapping from="LESSEE_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triTenantContactFullNameTX"/>
+        <mapping from="LESSEE_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triTenantContactFaxTX"/>
+        <mapping from="LESSEE_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triTenantContactWorkPhoneTX"/>
+        <mapping from="LESSEE_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triTenantContacteMailTX"/>
+        <mapping from="LESSEE_CUSTOMER_NUMBER" required="false" key="false" section="RecordInformation" to="triTenantVendorNumberTX"/>
+        <mapping from="LESSOR_ORG_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triPathTX" section="RecordInformation" to="triLandLordOwnerOrgLookupTX"/>
+        <mapping from="LESSOR_LEGAL_NAME" required="false" key="false" section="RecordInformation" to="triLandlordLegalNameTX"/>
+        <mapping from="LESSOR_FEDERAL_ID" required="false" key="false" section="RecordInformation" to="triLandLordOwnerFedIDTX"/>
+        <mapping from="LESSOR_STATE_COUNTRY_INCORP" required="false" key="false" section="RecordInformation" to="triLandLordLLIncorpGeoTX"/>
+        <mapping from="LESSOR_ADDRESS" required="false" key="false" section="RecordInformation" to="triLandLordAddressTX"/>
+        <mapping from="LESSOR_CITY" required="false" key="false" section="RecordInformation" to="triLandLordOwnerCityTX"/>
+        <mapping from="LESSOR_PO_BOX" required="false" key="false" section="RecordInformation" to="triLLPostBoxTX"/>
+        <mapping from="LESSOR_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triLLCitySubDivisionTX"/>
+        <mapping from="LESSOR_STATE" required="false" key="false" section="RecordInformation" to="triLandLordStateTX"/>
+        <mapping from="LESSOR_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triLandLordZipPostalTX"/>
+        <mapping from="LESSOR_COUNTRY" required="false" key="false" section="RecordInformation" to="triLandLordOwnerCountryTX"/>
+        <mapping from="LESSOR_CONTACT_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triNameTX" section="RecordInformation" to="triLandLordOwnerLookupTX"/>
+        <mapping from="LESSOR_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triLandLordOwnerNameTX"/>
+        <mapping from="LESSOR_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triLandLordOwnerFaxTX"/>
+        <mapping from="LESSOR_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triLandLordOwnerPhoneTX"/>
+        <mapping from="LESSOR_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triLandLordOwnerEmailTX"/>
+        <mapping from="LESSOR_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triLandlordVendorNumberTX"/>
+        <mapping from="MGMT_ORG_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triPathTX" section="RecordInformation" to="triOtherOrganizationLookupTX"/>
+        <mapping from="MGMT_LEGAL_NAME" required="false" key="false" section="RecordInformation" to="triOtherContactLegalNameTX"/>
+        <mapping from="MGMT_FEDERAL_ID" required="false" key="false" section="RecordInformation" to="triOtherContactFedIDTX"/>
+        <mapping from="MGMT_STATE_COUNTRY_INCORP" required="false" key="false" section="RecordInformation" to="triOtherLLIncorpGeoTX"/>
+        <mapping from="MGMT_ADDRESS" required="false" key="false" section="RecordInformation" to="triOtherContactAddressTX"/>
+        <mapping from="MGMT_CITY" required="false" key="false" section="RecordInformation" to="triOtherContactCityTX"/>
+        <mapping from="MGMT_PO_BOX" required="false" key="false" section="RecordInformation" to="triMCPostBoxTX"/>
+        <mapping from="MGMT_CITY_SUBDIVISION" required="false" key="false" section="RecordInformation" to="triMCCitySubDivisionTX"/>
+        <mapping from="MGMT_STATE" required="false" key="false" section="RecordInformation" to="triOtherContactStateProvTX"/>
+        <mapping from="MGMT_ZIP_CODE" required="false" key="false" section="RecordInformation" to="triOtherContactZipPostalTX"/>
+        <mapping from="MGMT_COUNTRY" required="false" key="false" section="RecordInformation" to="triOtherContactCountryTX"/>
+        <mapping from="MGMT_CONTACT_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triNameTX" section="RecordInformation" to="triOtherContactLookupTX"/>
+        <mapping from="MGMT_CONTACT_FULL_NAME" required="false" key="false" section="RecordInformation" to="triOtherContactNameTX"/>
+        <mapping from="MGMT_CONTACT_FAX" required="false" key="false" section="RecordInformation" to="triOtherContactFaxTX"/>
+        <mapping from="MGMT_CONTACT_WORK_PHONE" required="false" key="false" section="RecordInformation" to="triOtherContactPhoneTX"/>
+        <mapping from="MGMT_CONTACT_EMAIL" required="false" key="false" section="RecordInformation" to="triOtherContactEmailTX"/>
+        <mapping from="MGMT_VENDOR_NUMBER" required="false" key="false" section="RecordInformation" to="triVendorNumberTX"/>
+        <mapping from="TERMS_NOTE" required="false" key="false" section="RecordInformation" to="triTermsNO"/>
+        <mapping from="ACCOUNTING_CALENDAR" required="true" key="false" section="RecordInformation" to="triAccountingCalendarCL"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Option">
+      <worksheetName>OptionData</worksheetName>
+      <module>triItem</module>
+      <objectType>triOption</objectType>
+      <gui>triOption</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="General" fieldName="triStatusCL">
+        <action from="active" to="bypass triActive" label="Active" to2="cstRioTransform" label2="Active"/>		
+        <action from="exercised" to="bypass triExercised" label="Exercised" to2="cstRioTransform" label2="Exercised"/>
+        <action from="expired" to="bypass triExpired" label="Expired" to2="cstRioTransform" label2="Expired"/>
+        <action from="terminated" to="bypass triTerminated" label="Terminated" to2="cstRioTransform" label2="Terminated"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="RIO_UPID" required="true" key="true" section="General" to="cstUPIDTX"/>
+        <mapping from="DOCUMENT_TYPE" required="false" key="false" section="General" to="triLegalDocumentTypeCL"/>
+        <mapping from="GRANTED_IN_LEASE" required="false" key="false" section="General" to="triGrantedInLeaseCL"/>
+        <mapping from="SECTION" required="false" key="false" section="General" to="triSectionTX"/>
+        <mapping from="PAGE" required="false" key="false" section="General" to="triPageTX"/>
+        <mapping from="ABSTRACT_NOTES" required="false" key="false" section="General" to="triAbstractNotesTX"/>
+        <mapping from="OPTION_NUM" required="false" key="false" section="General" to="triOptionNumberNU"/>
+        <mapping from="ROLLING_OPTION" required="false" key="false" section="General" to="triRollingOptionBL"/>
+        <mapping from="OPTION_TYPE" required="true" key="false" section="General" to="triOptionTypeCL"/>
+        <mapping from="EFFECTIVE_DATE" required="true" key="false" section="General" to="triDateDA"/>		
+        <mapping from="EFFECTIVE_TO_DATE" required="false" key="false" section="General" to="triEffectivetoDateDA"/>
+        <mapping from="INTERNAL_NOTICE_DATE" required="false" key="false" section="General" to="triExpireNotifDA"/>
+        <mapping from="MUST_EXERCISE_BY" required="false" key="false" section="General" to="triExerciseExpirationDA"/>
+        <mapping from="OPTION_TEXT" required="false" key="false" section="General" to="triDescriptionTX"/>
+        <mapping from="LIKELY_PURCHASE_EXECUTE" required="false" key="false" section="General" to="triLikelyPurchaseExecuteDA"/>
+        <mapping from="PURCHASE_EXERCISE_COST" required="false" key="false" section="General" to="triPurchaseExerciseCostNU"/>
+        <mapping from="ECONOMIC_LIFE_END" required="false" key="false" section="General" to="triEconomicLifeEndDA"/>
+        <mapping from="PURCHASE_PRICE" required="false" key="false" section="General" to="triPurchasePriceNU"/>
+        <mapping from="COMMENTS" required="false" key="false" section="General" to="triCommentTX"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Option</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Is Option Of</forwardString>
+          <reverseString>Has Option</reverseString>
+          <smartSectionName/>
+        </relationship>
+
+        <relationship id="Real Estate Lease ::" type="association" required="false">
+          <srcMetaDataId>Option</srcMetaDataId>
+          <dstMetaDataId>Real Estate Lease</dstMetaDataId>
+          <forwardString>Is Option Of</forwardString>
+          <reverseString>Has Option</reverseString>
+          <smartSectionName/>
+        </relationship>		
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Clause">
+      <worksheetName>ClauseData</worksheetName>
+      <module>triItem</module>
+      <objectType>triLeaseClause</objectType>
+      <gui>cstRioClause</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="General" fieldName="triStatusCL">
+        <action from="create" to="bypass triActive" label="Active" to2="cstRioTransform" label2="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="RIO_UPID" required="true" key="true" section="General" to="cstUPIDTX"/>
+        <mapping from="NAME" required="true" key="false" section="General" to="triNameTX"/>
+        <mapping from="DOCUMENT_TYPE" required="false" key="false" section="General" to="triLegalDocumentTypeCL"/>
+        <mapping from="GRANTED_IN_LEASE" required="false" key="false" section="General" to="triGrantedInLeaseCL"/>
+        <mapping from="SECTION" required="false" key="false" section="General" to="triSectionTX"/>
+        <mapping from="PAGE" required="false" key="false" section="General" to="triPageTX"/>
+        <mapping from="ABSTRACT_NOTES" required="false" key="false" section="General" to="triAbstractNotesTX"/>
+        <mapping from="CLAUSE_TYPE" locSection="RecordInformation" locField="triNameTX" required="true" key="false" section="General" to="triClauseTypeTX"/>
+        <mapping from="CLAUSE_SUMMARY" required="false" key="false" section="General" to="triDescriptionTX"/>
+        <mapping from="CLAUSE_TEXT" required="false" key="false" section="General" to="triClauseNoteNO"/>
+        <mapping from="EXPECTED_FROM" required="false" key="false" section="General" to="triEffectiveDateDA"/>
+        <mapping from="EXPECTED_TO" required="false" key="false" section="General" to="triEffectiveEndDA"/>
+        <mapping from="INCLUDES_INDEX_ADJUSTMENT" required="false" key="false" section="General" to="triIndexAdjustmentBL"/>
+        <mapping from="GUARANTEE_TYPE" required="false" key="false" section="General" to="triGuaranteeTypeCL"/>
+        <mapping from="PAYMENT_TYPE" required="false" key="false" section="General" to="triPaymentTypeCL"/>
+        <mapping from="DEPOSIT_AMOUNT" required="false" key="false" section="General" to="triDepositAmountNU"/>
+        <mapping from="EXPECTED_RETURNED_AMOUNT" required="false" key="false" section="General" to="triReturnedAmountNU"/>
+        <mapping from="DEPOSIT_DATE" required="false" key="false" section="General" to="triDepositDA"/>
+        <mapping from="EXPECTED_RETURNED_DATE" required="false" key="false" section="General" to="triReturnedDA"/>
+        <mapping from="AFFECTED_BY_RENT" required="false" key="false" section="General" to="triAffectedByRentBL"/>
+        <mapping from="LL_CONSENT_ALTERATIONS" required="false" key="false" section="General" to="triLandlordConsentReqForAlterationBL"/>
+        <mapping from="THRESHOLD_AMOUNT" required="false" key="false" section="General" to="triThresholdAmountNU"/>
+        <mapping from="EXP_DESIGN_PREMISE_ALTERATIONS" required="false" key="false" section="General" to="triIsTheirExplicitDesignForPremiseAlterBL"/>
+        <mapping from="ARCH_APPROVAL_ALTERATIONS" required="false" key="false" section="General" to="triIsArchApprovalReqForAlterationBL"/>
+        <mapping from="COMPARE_TO_PREVIOUS" required="false" key="false" section="triIndexAdjustments" to="triPrevPaymentCompareLI"/>
+        <mapping from="COST_INDEX" required="false" key="false" section="triIndexAdjustments" to="triCostIndexCL"/>
+        <mapping from="INDEX_SOURCE" required="false" key="false" section="triIndexAdjustments" to="triIndexSourceTX"/>
+        <mapping from="BASE_YEAR" required="false" key="false" section="triIndexAdjustments" to="triLseBaseYearNU"/>
+        <mapping from="BASE_INDEX_DATE" required="false" key="false" section="triIndexAdjustments" to="triBaseIndexDateDA"/>
+        <mapping from="BASE_INDEX_PERCENT" required="false" key="false" section="triIndexAdjustments" to="triBaseIndexNU"/>
+        <mapping from="INDEX_PERCENT_AT_BASE_YEAR" required="false" key="false" section="triIndexAdjustments" to="triBaseIndexPctNU"/>
+        <mapping from="ADJUSTMENT_FREQUENCY" required="false" key="false" section="triIndexAdjustments" to="triRecurringFrequencyLI"/>
+        <mapping from="ADJUSTMENT_REMINDER" required="false" key="false" section="triIndexAdjustments" to="triAdjustmentReminderDU"/>
+        <mapping from="FIRST_ADJUSTMENT_DATE" required="false" key="false" section="triIndexAdjustments" to="triFirstDA"/>
+        <mapping from="YEAR_OF_ADJUSTMENT" required="false" key="false" section="triIndexAdjustments" to="triAdjustmentDU"/>
+        <mapping from="HAS_MINIMUM_PERCENT_INCREASE" required="false" key="false" section="triIndexAdjustments" to="triMinPercentIncreaseBL"/>
+        <mapping from="MINIMUM_PERCENT_INCREASE" required="false" key="false" section="triIndexAdjustments" to="triMinPercentIncreaseNU"/>
+        <mapping from="HAS_MAXIMUM_PERCENT_INCREASE" required="false" key="false" section="triIndexAdjustments" to="triMaxPercentIncreaseBL"/>
+        <mapping from="MAXIMUM_PERCENT_INCREASE" required="false" key="false" section="triIndexAdjustments" to="triMaxPercentIncreaseNU"/>
+        <mapping from="INDEX_ADJUSTMENTS_DESCRIPTION" required="false" key="false" section="triIndexAdjustments" to="triDescriptionTX"/>
+      </dataMap>		
+      <relationships>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Clause</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Is Clause Of</forwardString>
+          <reverseString>Has Clause</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Real Estate Lease ::" type="association" required="false">
+          <srcMetaDataId>Clause</srcMetaDataId>
+          <dstMetaDataId>Real Estate Lease</dstMetaDataId>
+          <forwardString>Is Clause Of</forwardString>
+          <reverseString>Has Clause</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Lease Clause">
+      <worksheetName>LeaseClauseData</worksheetName>
+      <module>triItem</module>
+      <objectType>triLeaseClause</objectType>
+      <gui>triClause</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="General" fieldName="triStatusCL">
+        <action from="create" to="bypass triActive" label="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="RIO_UPID" required="true" key="true" section="General" to="cstUPIDTX"/>
+      </dataMap>		
+      <relationships/>
+    </importMetaData>	
+    <importMetaData id="Asset Lease Clause">
+      <worksheetName>AssetLeaseClauseData</worksheetName>
+      <module>triItem</module>
+      <objectType>triLeaseClause</objectType>
+      <gui>triClauseAssetLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="General" fieldName="triStatusCL">
+        <action from="create" to="bypass triActive" label="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="RIO_UPID" required="true" key="true" section="General" to="cstUPIDTX"/>
+      </dataMap>		
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Pay Schedule">
+      <worksheetName>PayScheduleData</worksheetName>
+      <module>triActionForm</module>
+      <objectType>triGeneratePaySchedule</objectType>
+      <gui>triGeneratePaySchedule</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="General" fieldName="triStatusCL">
+        <action from="create" to="triCreate" label="Active" to2="cstRioTransform" label2="Active"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="true">
+        <mapping from="PAYMENT_TYPE" required="true" key="false" section="Record Information" to="triPaymentTypeCL"/>
+        <mapping from="ACCOUNTING_TYPE" required="true" key="false" section="Record Information" to="triAccountingTypeLI"/>
+        <mapping from="INCLUDE_IN_AMORTIZATION" required="true" key="false" section="General" to="triIncludeInAmortizationBL"/>
+        <mapping from="FULL_PAYMENT_START_DATE" required="true" key="false" section="General" to="triPeriodStartDA"/>
+        <mapping from="FIRST_PAY_PRORATED" required="true" key="false" section="General" to="triProratedPaymentLI"/>
+        <mapping from="ACTUAL_START_DATE" required="true" key="false" section="General" to="triFirstPaymentDA"/>
+        <mapping from="END_DATE" required="true" key="false" section="General" to="triEndDA"/>
+        <mapping from="NUM_OF_SCHEDULES" required="true" key="false" section="General" to="triPctGrowthNumSchedNU"/>
+        <mapping from="ADJUST_EVERY_X_MONTHS" required="true" key="false" section="General" to="triPctGrowthAdjustMonthNU"/>
+        <mapping from="FREQUENCY" required="true" key="false" section="General" to="triCovenantFrequencyTypeCL"/>
+        <mapping from="GROWTH_TYPE" required="false" key="false" section="General" to="triGrowthTypeLI"/>
+        <mapping from="PCT_GROWTH" required="false" key="false" section="General" to="triPctGrowthNU"/>
+        <mapping from="FIXED_GROWTH" required="false" key="false" section="General" to="triFixedGrowthNU"/>
+        <mapping from="PAYMENT_DUE_DAY" required="true" key="false" section="Record Information" to="triDayOfMonthLI"/>
+        <mapping from="EXPECTED_CASH_AMOUNT" required="true" key="false" section="General" to="triPctGrowthStartAmtNU"/>
+        <mapping from="CONTRACT_RENTABLE" required="false" key="false" section="Record Information" to="triContractRentableNU"/>
+        <mapping from="DESCRIPTION" required="false" key="false" section="Record Information" to="triDescriptionTX"/>
+        <mapping from="ACCOUNTING_COST_CENTER" required="false" key="false" section="Record Information" to="triCostCodeTX"/>
+        <mapping from="LATE_FEES" required="false" key="false" section="Record Information" to="triLateFeeBL"/>
+        <mapping from="BASED_ON_ESTIMATE" required="false" key="false" section="Record Information" to="triEstimateBL"/>
+        <mapping from="TAXABLE" required="false" key="false" section="Record Information" to="triTaxBL"/>
+        <mapping from="OPTION_TERM_PAYMENT" required="false" key="false" section="General" to="triOptionTermPaymentBL"/>
+        <mapping from="REMIT_ORG_LOOKUP" required="false" key="false" locSection="RecordInformation" locField="triPathTX" section="General" to="triRemitToLookUpTX"/>
+        <mapping from="CALCULATION_METHOD" required="true" key="false" section="General" to="triCalculationMethodLI"/>
+        <mapping from="PRO_RATA_BASIS" required="true" key="false" section="General" to="triProRataBasisCL"/>
+        <mapping from="CHARGE_AMOUNT_BASIS" required="true" key="false" section="General" to="triPayEntryTypeLI"/>
+        <mapping from="PAYMENT_DUE_ON" required="true" key="false" section="General" to="triFirstLastLI"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Cost Code ::" type="smart section" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Cost Code</dstMetaDataId>
+          <forwardString/>
+          <reverseString/>
+          <smartSectionName>triExpenseCode</smartSectionName>
+        </relationship>
+        <relationship id="Asset Lease ::" type="association" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Asset Lease</dstMetaDataId>
+          <forwardString>Prepopulate</forwardString>
+          <reverseString>Prepopulate</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Real Estate Lease ::" type="association" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Real Estate Lease</dstMetaDataId>
+          <forwardString>Prepopulate</forwardString>
+          <reverseString>Prepopulate</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Owned Property Agreement ::" type="association" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Owned Property Agreement</dstMetaDataId>
+          <forwardString>Prepopulate</forwardString>
+          <reverseString>Prepopulate</reverseString>
+          <smartSectionName/>
+        </relationship>			
+        <relationship id="Option ::" type="association" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Option</dstMetaDataId>
+          <forwardString>Temporary</forwardString>
+          <reverseString>Temporary</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Lease Clause ::" type="association" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Lease Clause</dstMetaDataId>
+          <forwardString>Temporary</forwardString>
+          <reverseString>Temporary</reverseString>
+          <smartSectionName/>
+        </relationship>
+        <relationship id="Asset Clause ::" type="association" required="false">
+          <srcMetaDataId>Pay Schedule</srcMetaDataId>
+          <dstMetaDataId>Asset Lease Clause</dstMetaDataId>
+          <forwardString>Temporary</forwardString>
+          <reverseString>Temporary</reverseString>
+          <smartSectionName/>
+        </relationship>
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="Cost Code">
+      <worksheetName>CostCodeData</worksheetName>
+      <module>triCostCode</module>
+      <objectType>triCostCode</objectType>
+      <gui></gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="false" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>	
+    <importMetaData id="Owned Property Agreement">
+      <worksheetName>OwnedPropertyData</worksheetName>
+      <module>triContract</module>
+      <objectType>triRealEstateContract</objectType>
+      <gui>triOwnedProperty</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions>
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap>
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="START_DATE" required="true" key="false" section="RecordInformation" to="triStartDA"/>
+        <mapping from="PROVIDER_TYPE" required="true" key="false" section="RecordInformation" to="triProviderTypeLI"/>
+        <mapping from="ACCOUNTING_CALENDAR" required="true" key="false" section="RecordInformation" to="triAccountingCalendarCL"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>	
+
+    <importMetaData id="General Custom Task DTO Helper">
+      <worksheetName>CustomTaskDtoHelperData</worksheetName>
+      <module>triHelper</module>
+      <objectType>cstGeneralCustomTaskDtoHelper</objectType>
+      <gui>cstGeneralCustomTaskDtoHelper</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="INPUT" required="true" key="true" section="General" to="cstInput001TX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Real Estate Lease">
+      <worksheetName>RealEstateLeaseData</worksheetName>
+      <module>triContract</module>
+      <objectType>triRealEstateContract</objectType>
+      <gui>triRealEstateLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions>
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap>
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="START_DATE" required="true" key="false" section="RecordInformation" to="triStartDA"/>
+        <mapping from="PROVIDER_TYPE" required="true" key="false" section="RecordInformation" to="triProviderTypeLI"/>
+        <mapping from="ACCOUNTING_CALENDAR" required="true" key="false" section="RecordInformation" to="triAccountingCalendarCL"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Batch Payment FM">
+      <worksheetName>BatchPaymentFmData</worksheetName>
+      <module>cstLoader</module>
+      <objectType>cstBatchPaymentFM</objectType>
+      <gui>cstBatchPaymentFM</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="General" to="triIdTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Batch Payment FM-WTI">
+      <worksheetName>BatchPaymentFmWtiData</worksheetName>
+      <module>triPayment</module>
+      <objectType>triInvoice</objectType>
+      <gui>triTaskInvoice</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInfo" to="triIdTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Batch Payment EM">
+      <worksheetName>BatchPaymentEmData</worksheetName>
+      <module>cstLoader</module>
+      <objectType>cstBatchPaymentEM</objectType>
+      <gui>cstBatchPaymentEM</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="General" to="triIdTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Process Payments">
+      <worksheetName>ProcessPaymentsData</worksheetName>
+      <module>triPayment</module>
+      <objectType>triProcessPayments</objectType>
+      <gui>triProcessPayments</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="tricreatedraft" to="triCreateDraft" label="Draft"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInfo" to="triIdTX"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="Payment Voucher">
+      <worksheetName>PaymentVoucherData</worksheetName>
+      <module>triCostItem</module>
+      <objectType>triPaymentVoucher</objectType>
+      <gui>triPaymentVoucher</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="RecordInformation" fieldName="triStatusCL">
+        <action from="create" to="triCreateDraft" label="Draft"/>
+        <action from="process" to="triSave" label="Active" to2="triProcessing" label2="Processing"/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="ID" required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="SAPDate"  required="false" key="false" section="RecordInformation" to="cstSentForPaymentDateDA"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+
+    <importMetaData id="RE Contract Revision">
+      <worksheetName>REContractRevisionData</worksheetName>
+      <module>triLog</module>
+      <objectType>triContractRevision</objectType>
+      <gui>triREContractRevision</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="" fieldName="">
+        <action from="revise" to="bypass triHistory" label="" to2="cstRioTransformREAcctRevise" label2=""/>
+      </actions>
+      <dataMap overrideWithPopSpecId="true">
+        <mapping from="CHANGE_TYPE" required="true" key="false" section="General" to="triChangeTypeLI"/>
+        <mapping from="FISCAL_PERIOD" required="true" key="false" section="General" to="triFiscalPeriodCL"/>
+        <mapping from="DESCRIPTION"  required="false" key="false" section="General" to="triDescriptionTX"/>
+      </dataMap>
+      <relationships>
+        <relationship id="Real Estate Lease ::" type="association" required="true">
+          <srcMetaDataId>RE Contract Revision</srcMetaDataId>
+          <dstMetaDataId>Real Estate Lease</dstMetaDataId>
+          <forwardString>Prepopulate</forwardString>
+          <reverseString></reverseString>
+          <smartSectionName/>
+        </relationship>		
+      </relationships>
+    </importMetaData>
+
+    <importMetaData id="RE Lease Acct Revise">
+      <worksheetName>RELeaseAcctReviseData</worksheetName>
+      <module>triContract</module>
+      <objectType>triRealEstateContract</objectType>
+      <gui>triRealEstateLease</gui>
+      <queryFilterId>default</queryFilterId>
+      <actions dataSectionName="" fieldName="">
+        <action from="save" to="cstRioTransformLA" label=""/>
+      </actions>
+      <dataMap overrideWithPopSpecId="false">
+        <mapping from="NAME" required="true" key="true" section="RecordInformation" to="triNameTX"/>
+        <mapping from="ID"  required="true" key="true" section="RecordInformation" to="triIdTX"/>
+        <mapping from="ACCOUNTING_END_DATE"  required="false" key="false" section="RecordInformation" to="triAccountingEndDateDA"/>
+        <mapping from="IBR_RATE"  required="false" key="false" section="triLeaseGrowthAssumptions" to="triFasbIncrementalBorrowRateNU"/>
+        <mapping from="BUSINESS_UNIT" locSection="General" locField="triPathTX" required="false" key="false" section="RecordInformation" to="triBusinessUnitOrgTX"/>
+        <mapping from="PROJECT_RENT_PAYMENT"  required="false" key="false" section="RecordInformation" to="triProjectRentPaymentBL"/>
+        <mapping from="INITIAL_LIABILITY_CARRYOVER_BALANCE"  required="false" key="false" section="RecordInformation" to="triRentDeferredLiabilityCarryoverNU"/>
+        <mapping from="INITIAL_DIRECT_COSTS"  required="false" key="false" section="RecordInformation" to="triInitialDirectCostsNU"/>
+        <mapping from="RESIDUAL_VALUE_GUARANTEE"  required="false" key="false" section="RecordInformation" to="triResidualValueGuaranteeNU"/>
+        <mapping from="DISMANTLE_COST"  required="false" key="false" section="RecordInformation" to="triDismantleCostNU"/>
+      </dataMap>
+      <relationships/>
+    </importMetaData>
+  </importMetaDataList>
+</formSettings>

@@ -1,0 +1,264 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Upload";
+}
+
+<script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+<script src="~/signalr/hubs"></script>
+
+<div class="container">
+    <div class="form">
+        @Html.Hidden("inDataFile")
+        @Html.Hidden("environment")
+        @Html.Hidden("successProgress")
+        @Html.Hidden("physicalDataFile")
+        @Html.Hidden("valReportDataFile")
+        @*@Html.Hidden("userName")
+        @Html.Hidden("Password")*@
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-header">
+                        Upload File
+                    </div>
+                    <div class="card-body">
+                        @(Html.Kendo().Upload()
+                            .Name("uploadFile")
+                            .Async(a => a
+                                .Save("AsyncUploadDataFile", "Upload")
+                                .Remove("AsyncRemoveDataFile", "Upload")
+                                .AutoUpload(true))
+                            .Multiple(false)
+                            .Events(events => events
+                                .Success("onSuccess")
+                            )
+
+                        )
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Select Environment</label>
+                    @(Html.Kendo().DropDownList()
+                                .Name("environments")
+                                .DataTextField("name")
+                                .DataValueField("name")
+                                .DataSource(source =>
+                                {
+                                    source.Read(read =>
+                                    {
+                                        read.Action("RemoteDataSource_GetEnvironments", "Upload");
+                                    });
+                                })
+                                .HtmlAttributes(new { style = "width: 100%" })
+                                .Events(e =>
+                                {
+                                    e.Select("onEnvSelect");
+                                })
+                    )
+                </div>
+                <div class="form-group">
+                    <label>UserName</label>
+                    @Html.TextBox("userName", null, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    @Html.TextBox("password", null, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="form-group">
+                    @*<input id="Validate" type="button" value="validate" onclick="Validate();" />*@
+                    <button type="button" class="btn btn-primary" onclick="validate();">Validate</button>
+
+
+                    @(Html.Kendo().ProgressBar()
+                                                .Name("validateProgress")
+                                                .Type(ProgressBarType.Percent)
+                                                .Animation(a => a.Duration(25))
+                            //.ChunkCount(100)
+
+                    )
+                    @*<div class="progress">
+
+                    <div name="bsprogress"class="progress-bar" role="progressbar" aria-valuenow="5"
+                         aria-valuemin="0" aria-valuemax="100" style="width:5%">
+                        <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>*@
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="process();">Process</button>
+
+                    @(Html.Kendo().ProgressBar()
+                                            .Name("processProgress")
+                                            .Type(ProgressBarType.Percent)
+                                            .Animation(false)
+                    )
+                </div>
+                <div class="form-group">
+                    <label>Log</label>
+                    @Html.TextArea("Log", null, new { @class = "form-control", rows = "10" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" language="javascript">
+
+    function validate() {
+
+        // initialize the connection to the server
+        var progressNotifier = $.connection.progressHub;
+
+        // client-side sendMessage function that will be called from the server-side
+        progressNotifier.client.sendMessage = function (progressAndStatus) {
+            // update progress
+            UpdateProgress(progressAndStatus);
+        };
+
+        $("#successProgress").val(1); 
+
+        // establish the connection to the server and start server-side operation
+        $.connection.hub.start().done(function () {
+            // call the method CallLongOperation defined in the Hub
+            var progressAndStatus = {
+                inDataFile: $('#inDataFile').val(),
+                physicalDataFile: $('#physicalDataFile').val(),
+                validationReportFile: $('#valReportDataFile').val(),
+                environment: $('#environment').val(),
+                successProgress: $("#successProgress").val(),
+                userName: $("#userName").val(),
+                password: $("#password").val()
+            };
+            //progressNotifier.server.validate(progressAndStatus);
+            progressNotifier.server.validateAsync(progressAndStatus);
+        });
+    };
+
+    function process() {
+
+        // initialize the connection to the server
+        var progressNotifier = $.connection.progressHub;
+
+        // client-side sendMessage function that will be called from the server-side
+        progressNotifier.client.sendMessage = function (progressAndStatus) {
+            // update progress
+            UpdateProgress(progressAndStatus);
+        };
+
+        // establish the connection to the server and start server-side operation
+        $.connection.hub.start().done(function () {
+            var progressAndStatus = {
+                inDataFile: $('#inDataFile').val(),
+                physicalDataFile: $('#physicalDataFile').val(),
+                validationReportFile: $('#valReportDataFile').val(),
+                environment: $('#environment').val(),
+                successProgress: $("#successProgress").val(),
+                userName: $("#userName").val(),
+                password: $("#password").val()
+            };
+            //progressNotifier.server.process(progressAndStatus);
+            progressNotifier.server.processAsync(progressAndStatus);
+        });
+    };
+
+    function onSuccess(e) {
+
+        if (e.operation == "upload") {
+            var responseFileName = e.response.PhysicalFileName;
+            var valReportFileName = e.response.ValidationReportFile;
+            $("#physicalDataFile").val(responseFileName);
+            $("#valReportDataFile").val(valReportFileName);
+        }
+    }
+
+
+    function onEnvSelect(e) {
+        if (e.item) {
+            var dataItem = this.dataItem(e.item);
+            $("#environment").val(dataItem.name);
+        }
+    }
+
+    //function validateAndProcess() {
+    //    // initialize the connection to the server
+    //    var progressNotifier = $.connection.progressHub;
+
+    //    // client-side sendMessage function that will be called from the server-side
+    //    progressNotifier.client.sendMessage = function (message, progress, method) {
+    //        // update progress
+    //        UpdateProgress(message, progress, method);
+    //    };
+
+    //    // establish the connection to the server and start server-side operation
+    //    $.connection.hub.start().done(function () {
+
+    //        var data = {
+    //            dataFile: $('#dataFile').val(),
+    //            templateFile: $('#templateFile').val(),
+    //            environment: $('#environment').val()
+    //        };
+    //        progressNotifier.server.validateAndProcess(data);
+    //    });
+    //}
+
+    //function UpdateProgress(message, progressVal, method) {
+    function UpdateProgress(progressAndStatus) {
+
+        var progressVal = progressAndStatus.ProgressVal;
+        var message = progressAndStatus.Message;
+        var method = progressAndStatus.Method;
+        var successProgress = progressAndStatus.SuccessProgress;
+
+        if (method == 1) {
+            var box = $('#Log');
+            if (message) {
+                box.val(box.val() + message + "\n");
+            }
+            $("#validateProgress").data("kendoProgressBar").value(progressVal);
+            $("#successProgress").val(successProgress);
+
+            if (successProgress == 2) {
+
+            }
+
+        }
+        else {
+            var box = $('#Log');
+            if (message) {
+                box.val(box.val() + message + "\n");
+            }
+            $("#processProgress").data("kendoProgressBar").value(progressVal);
+
+            
+
+            //$('.progress-bar').css('width', progressVal + '%').attr('aria-valuenow', progressVal);  
+        }
+
+    }
+
+    function getFileInfo(e) {
+        return $.map(e.files, function (file) {
+            var info = file.name;
+
+            // File size is not available in all browsers
+            if (file.size > 0) {
+                info += " (" + Math.ceil(file.size / 1024) + " KB)";
+            }
+            return info;
+        }).join(", ");
+    }
+
+    function getFileName(e) {
+        return $.map(e.files, function (file) {
+            var info = file.name;
+            return info;
+        }).join(", ");
+    }
+
+</script>
